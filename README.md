@@ -1,4 +1,4 @@
-# spcoin-hardhat-contracts-js-access
+# spcoin-hardhat-contract-access-tests
 
 ---
 ### Directory of Information
@@ -25,7 +25,7 @@ Robert Lanson | sponsorcoin@yahoo.com
 
 - - - -
 ### Copyright Agreement<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/policeman.png" width="5%" align= "right">
-<b>Package [<b>spcoin-hardhat-contracts-js-access</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/tree/main) ©</b> 
+<b>Package [<b>spcoin-hardhat-contract-access-tests</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/tree/main) ©</b> 
 
 Read all copyright clauses and information before continuing to download and/or interact with this software. All interaction and use of such software hereon forward assumes complete agreement to all copyright terms and general conditions as specified. 
 
@@ -40,18 +40,18 @@ Read all copyright clauses and information before continuing to download and/or 
 <b>**INSTALL AT YOUR OWN RISK: END OF DISCLAIMER</b>
  - - - -
 ### Repository Information<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/repository.png" width="5%" align= "right">
-- <b>https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access</b>
+- <b>https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests</b>
 - - - -
 ### About<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/aboutMickey.png" width="6%" align= "right">
 - Version: 1.0.0
 - Release Date: Dec 1st. 2024
-- Purpose: [<b>spcoin-hardhat-contracts-js-access</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/tree/main) is a WIP GUI front end package to demonstrate blockchain connectivity and transactions.
-- Description: [<b>spcoin-hardhat-contracts-js-access</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/tree/main) package is a front end GUI package mimicking Uniswap's appearance and utilizing Uniswap’s SDK to perform price matching and trade transactions. 
+- Purpose: [<b>spcoin-hardhat-contract-access-tests</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/tree/main) is a WIP GUI front end package to demonstrate blockchain connectivity and transactions.
+- Description: [<b>spcoin-hardhat-contract-access-tests</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/tree/main) package is a front end GUI package mimicking Uniswap's appearance and utilizing Uniswap’s SDK to perform price matching and trade transactions. 
  - - - -
 ### Installation<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/installation.png" width="7%" align= "right">
 - Please Note: For a comprehensive demonstration of the installation process, refer to the 'Video Tutorial' section below.
-- In your installation directory, clone your local computer, the package: <b>[<b>spcoin-hardhat-contracts-js-access</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/tree/main) ©</b> 
-- Change your current directory to <b>/spcoin-hardhat-contracts-js-access</b>
+- In your installation directory, clone your local computer, the package: <b>[<b>spcoin-hardhat-contract-access-tests</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/tree/main) ©</b> 
+- Change your current directory to <b>/spcoin-hardhat-contract-access-tests</b>
 - Install the required node packages, <b>npm -install</b>
 - Next install the text menu driven system as follows:
     - execute the following command: <b>'. ./scripts/setupEnvAlises.sh</b>'
@@ -61,27 +61,27 @@ Read all copyright clauses and information before continuing to download and/or 
  - - - - 
 ### Environment Setup<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/setup6.png" width="7%" align= "right">
 - Now we will setup the menu alises for testing the sponsor coin project through hardhat.
-- From a linux command windrow, run the menu script <b>. ./scripts/setupEnvAlises.sh</b> from the projects home directory <b>spcoin-hardhat-contracts-js-access</b>.
+- From a linux command windrow, run the menu script <b>. ./scripts/setupEnvAlises.sh</b> from the projects home directory <b>spcoin-hardhat-contract-access-tests</b>.
 - Typing <b>m</b> will display a list of menu shortcut alias commands.
-- A sample configuration file <b>"[<b>.env</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/blob/main/.e/SAMPLE.env)"</b> exists in  project's home directory <b>/spcoin-hardhat-contracts-js-access/.e/SAMPLE.env</b>.
+- A sample configuration file <b>"[<b>.env</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/blob/main/.e/SAMPLE.env)"</b> exists in  project's home directory <b>/spcoin-hardhat-contract-access-tests/.e/SAMPLE.env</b>.
 - Create an account on <b>"[<b>ALCHEMY</b>](https://auth.alchemy.com/?redirectUrl=https%3A%2F%2Fdashboard.alchemy.com)"</b>. And get your free <b>ALCHEMY</b> Network access keys.
 - Create an account on <b>"[<b>INFURA</b>](https://app.infura.io/login)"</b>. And get your free <b>INFURA</b> Network access keys.
-- Copy the sample file <b>/spcoin-hardhat-contracts-js-access/.e/SAMPLE.env</b> to <b>/spcoin-hardhat-contracts-js-access/.env</b>.
+- Copy the sample file <b>/spcoin-hardhat-contract-access-tests/.e/SAMPLE.env</b> to <b>/spcoin-hardhat-contract-access-tests/.env</b>.
 - This file, <b>"[<b>.env</b>]"</b> requires your keys from above to be added for block chain network access.
-- Further environment settings exist in the file <b>/spcoin-hardhat-contracts-js-access/env/.e</b>.
+- Further environment settings exist in the file <b>/spcoin-hardhat-contract-access-tests/env/.e</b>.
  - - - - 
 ### Command Menu Shortcuts<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/menu 4.jpg" width="7%" align= "right">
-The <b>All Command Menus</b> are a list of shortcut alias commands for administering the [<b>'spcoin-hardhat-contracts-js-access'</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/blob/main/.e/.a) project.
+The <b>All Command Menus</b> are a list of shortcut alias commands for administering the [<b>'spcoin-hardhat-contract-access-tests'</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/blob/main/.e/.a) project.
 - If the menu system is installed correctly, simply type short cut alias <b>'m \<enter>'</b> in a bash window and the following should appear:
 - - - - 
 #### The Main Menu
 ![<b>Author Image</b>](https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/mainMenu.jpg)
-The above menu is simply a menu of many submenus. Each entry is an alias to an alternate command menu short cut. Each submenu exists under the repositories’ spcoin-hardhat-contracts-js-access/env directory. These menus cane be more completely described in the file [<b>./setupEnv/ReadMe.md</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv/blob/main/README.md).
+The above menu is simply a menu of many submenus. Each entry is an alias to an alternate command menu short cut. Each submenu exists under the repositories’ spcoin-hardhat-contract-access-tests/env directory. These menus cane be more completely described in the file [<b>./setupEnv/ReadMe.md</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv/blob/main/README.md).
 - - - - 
 #### Running Your First Test Through the Menu
 - Menu test example, running run alias command <b>"hhtest</b> which is defined as alias hhtest='sethh; reset;clear; npx hardhat test 2>&1 | tee ./test.out/hhtest.out'"</b>
 - Type hhtest <return>
-- This command starts a hardhat server, deploys spCoin on the server, runs a test and dumps the output to directory file <b>"sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/test.out/hhtest.out"</b>
+- This command starts a hardhat server, deploys spCoin on the server, runs a test and dumps the output to directory file <b>"sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/test.out/hhtest.out"</b>
 - - - - 
 #### Hardhat localhost Server Setup
 - HardHat is a network access server for implementing and testing contracts using Javascript Node.
@@ -93,15 +93,15 @@ The above menu is simply a menu of many submenus. Each entry is an alias to an a
 - Remix is a browser based Solidity contract ide required to edit test and/or deploy contracts to a specified network.
 - In the browser of your choice, enter the URL <b>https://remix.ethereum.org/</b>
 - Videos are available as a tutorial starter on this site.
-- Change directory to the project directory <b>spcoin-hardhat-contracts-js-access</b> and start the source workspace server by typing <b>remixd</b>
+- Change directory to the project directory <b>spcoin-hardhat-contract-access-tests</b> and start the source workspace server by typing <b>remixd</b>
 - In the Remix page on the browser select <b>File Explorer</b> and open <b>Local File System</b> the directory should be loaded.
 - Start the HardHAt server with the command <b>npx hardhat node &</b> which should start up ad hardhat server endpoint at <b>http://127.0.0.1:8545</b>.
 - - - -
 ### Package Contents<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/contents.png" width="6%" align= "right">
-- [<b>README.md</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/edit/main/README.md) ~ The Readme Documentation is this documentation.
-- [<b>./scripts/spCoinSetup.sh</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/blob/main/scripts/spCoinSetup.sh)  ~ This file is to be run from the scripts directory and downloads the [<b>spcoin-hardhat-contracts-js-access</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/tree/main</b>) repository to local. Next it executes the [<b>spCoinEnvSetup.sh</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv/blob/main/spCoinEnvSetup.sh) file for environment setup.
+- [<b>README.md</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/edit/main/README.md) ~ The Readme Documentation is this documentation.
+- [<b>./scripts/spCoinSetup.sh</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/blob/main/scripts/spCoinSetup.sh)  ~ This file is to be run from the scripts directory and downloads the [<b>spcoin-hardhat-contract-access-tests</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/tree/main</b>) repository to local. Next it executes the [<b>spCoinEnvSetup.sh</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv/blob/main/spCoinEnvSetup.sh) file for environment setup.
 - [<b>./setupEnv/</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv/tree/ef96401c818432d0fe6ff1d6642fab31f44b6fb5) ~ This directory is a mounted submodule containing files for environment and menu execution commands. refer to the [<b>./setupEnv/ReadMe.md</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv/blob/main/README.md) for a more complete Overview.
-- [<b>./setupEnv/spCoinEnvSetup.sh</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv) ~ This shell creates the environment variable settings and sets up the menus for testing and execution commands in [<b>'spcoin-hardhat-contracts-js-access'</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contracts-js-access/tree/main).
+- [<b>./setupEnv/spCoinEnvSetup.sh</b>](https://github.com/sponsorCoinAdmin/spCoinSetupEnv) ~ This shell creates the environment variable settings and sets up the menus for testing and execution commands in [<b>'spcoin-hardhat-contract-access-tests'</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/tree/main).
  - - - -
 ### Running the Contract tests through HardHat using NodeJS <img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/running2.png" width="6%" align= "right">
 
@@ -190,7 +190,7 @@ Requirements to Delete Account
 ### Video Tutorial<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/video.png" width="5%" align= "right">
 - Comprehensive Video Tutorial Currently Under Construction. Resource will be posted as soon as it is ready for publication.
 
-<b>[![ToDo](https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/maxresdefault.jpg)]</b>(https://youtu.be/T_d5-y8hpYI "<b>spcoin-hardhat-contracts-js-access</b> ~ A brief overview")
+<b>[![ToDo](https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/maxresdefault.jpg)]</b>(https://youtu.be/T_d5-y8hpYI "<b>spcoin-hardhat-contract-access-tests</b> ~ A brief overview")
 
 ### About the Authors
 ![<b>Author Image</b>](https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/RobinPhoto.jpg)
