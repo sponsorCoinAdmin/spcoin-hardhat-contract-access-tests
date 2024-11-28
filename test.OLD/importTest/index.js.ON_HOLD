@@ -1,0 +1,5 @@
+//import { SpCoinClassMethods } from "../../spcoin-access-modules/importTest1"; 
+import { SpCoinClassMethods } from "@sponsorcoin/spcoin-access-modules/importTest1"; 
+
+
+console.log('Executing importTest')
