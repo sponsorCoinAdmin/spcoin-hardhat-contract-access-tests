@@ -1,5 +1,5 @@
 const { assert } = require ('chai');
-const { fs } = require('fs')
+const fs = require('fs')
 
 let ethers = hre.ethers;
 

@@ -8,6 +8,7 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deploySpCoinContract, getDeployedArtifactsAbiAddress } = require("../lib/deployContract");
+const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_Methods.js"); 
 
 let spCoinContractDeployed;
 let spCoinClassMethods;
@@ -33,7 +34,10 @@ describe("spCoinContract", function () {
     RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
     BURN_ACCOUNT = hHAccountRateMethods.BURN_ACCOUNT;
     const { abi:spCoinABI, address:spCoinAddress }= await getDeployedArtifactsAbiAddress("SPCoin");
-    const signer = SPONSOR_ACCOUNT_SIGNERS[0]
+    const signer = SPONSOR_ACCOUNT_SIGNERS[0];
+
+    console.debug(`spCoinAddress = ${JSON.stringify(spCoinAddress,null,2)}`)
+    console.debug(`spCoinABI = \n${JSON.stringify(spCoinABI,null,2)}`)
 
     spCoinContractDeployed = await deploySpCoinContract();
     spCoinClassMethods = new SpCoinClassMethods( spCoinABI, spCoinAddress, signer);
