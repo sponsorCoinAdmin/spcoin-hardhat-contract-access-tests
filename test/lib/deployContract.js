@@ -1,5 +1,6 @@
-// import hre from "hardhat";
-// import fs from 'fs';
+const { assert } = require ('chai');
+const { fs } = require('fs')
+
 let ethers = hre.ethers;
 
 let spCoinContractDeployed;
@@ -61,12 +62,12 @@ async function getDeployedContract(signer, symbol) {
   return signedWeth;
 }
 
-export {  deployContract,
-          deploySpCoinContract,
-          deployWETH9Contract,
-          getDeployedArtifactsAbiAddress,
-          getDeployedContract,
-          getNewDeployedContract,
-          getSpCoinContract,
-          getWeth9Contract
+module.exports = {
+    deploySpCoinContract,
+    deployWETH9Contract,
+    getDeployedArtifactsAbiAddress,
+    getDeployedContract,
+    getNewDeployedContract,
+    getSpCoinContract,
+    getWeth9Contract
   }
