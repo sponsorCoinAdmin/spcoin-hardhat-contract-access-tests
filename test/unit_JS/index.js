@@ -8,7 +8,7 @@ const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deploySpCoinContract, getDeployedArtifactsAbiAddress } = require("../lib/deployContract");
-const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_Methods_NEW.js"); 
+const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_Methods.js"); 
 
 let spCoinContractDeployed;
 let spCoinClassMethods;
@@ -50,7 +50,7 @@ describe("spCoinContract", function () {
     spCoinLogger = spCoinClassMethods.spCoinLogger;
   });
 
-  xit("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
+  it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
     hHAccountRateMethods.dump();
     console.log(`signer.address = ${signer.address}`);
 
