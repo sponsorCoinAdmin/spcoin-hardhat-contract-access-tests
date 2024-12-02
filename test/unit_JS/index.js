@@ -1,9 +1,3 @@
-// import { assert } from 'chai';
-// // import { SpCoinClassMethods } from "@sponsorcoin/spcoin-access-modules/spCoin_JS_Methods"; 
-// import { SpCoinClassMethods } from "../../spcoin-access-modules/spCoin_JS_Methods"; 
-// import { deploySpCoinContract, getDeployedArtifactsAbiAddress } from "../lib/deployContract";
-// import { HHAccountRateMethods } from "../lib/hhAccountRateMethods";
-
 const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year, month, millennium } = require( "../../spcoin-access-modules/lib/utils/dateTime"); 
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
