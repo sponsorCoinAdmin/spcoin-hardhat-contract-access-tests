@@ -36,6 +36,7 @@ async function getDeployedArtifactsAbiAddress(symbol){
   const ABI_FILE_PATH=`${HARDHAT_ARTIFACTS_HOME}${symbol}.sol/${symbol}.json`
   console.log(`ABI_FILE_PATH = ${ABI_FILE_PATH}`);
   const data = await fsPromises.readFile(ABI_FILE_PATH, 'utf8');
+  console.log(`ABI_FILE_PATH data = ${data}`);
   const abi = JSON.parse(data)['abi'];
   return { address, abi };
 }

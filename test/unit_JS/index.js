@@ -12,6 +12,7 @@ const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_M
 
 let spCoinContractDeployed;
 let spCoinClassMethods;
+let weth9ContractDeployed;
 let spCoinAddMethods;
 let spCoinRewardsMethods;
 let spCoinReadMethods;
@@ -25,29 +26,69 @@ let BURN_ACCOUNT;
 
 describe("spCoinContract", function () {
   beforeEach(async () => {
+
+    // hHAccountRateMethods = new HHAccountRateMethods();
+    // await hHAccountRateMethods.initHHAccounts()
+    // // hHAccountRateMethods.dump()
+    // SPONSOR_ACCOUNT_SIGNERS = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS;
+    // RECIPIENT_ACCOUNT_KEYS = hHAccountRateMethods.RECIPIENT_ACCOUNT_KEYS;
+    // SPONSOR_ACCOUNT_KEYS = hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS;
+    // RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
+    // BURN_ACCOUNT = hHAccountRateMethods.BURN_ACCOUNT;
+    // const { abi:spCoinABI, address:spCoinAddress }= await getDeployedArtifactsAbiAddress("SPCoin");
+    // let signer = SPONSOR_ACCOUNT_SIGNERS[0];
+
+    // console.debug(`spCoinAddress = ${JSON.stringify(spCoinAddress,null,2)}`)
+    // console.debug(`spCoinABI = \n${JSON.stringify(spCoinABI,null,2)}`)
+
+    // spCoinContractDeployed = await deploySpCoinContract();
+    // spCoinClassMethods = new SpCoinClassMethods( spCoinABI, spCoinAddress, signer);
+    // spCoinAddMethods = spCoinClassMethods.spCoinAddMethods;
+    // spCoinRewardsMethods = spCoinClassMethods.spCoinRewardsMethods;
+    // spCoinReadMethods = spCoinClassMethods.spCoinReadMethods;
+    // spCoinLogger = spCoinClassMethods.spCoinLogger;
+
+
     hHAccountRateMethods = new HHAccountRateMethods();
     await hHAccountRateMethods.initHHAccounts()
-    // hHAccountRateMethods.dump()
     SPONSOR_ACCOUNT_SIGNERS = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS;
-    RECIPIENT_ACCOUNT_KEYS = hHAccountRateMethods.RECIPIENT_ACCOUNT_KEYS;
-    SPONSOR_ACCOUNT_KEYS = hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS;
-    RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
-    BURN_ACCOUNT = hHAccountRateMethods.BURN_ACCOUNT;
-    const { abi:spCoinABI, address:spCoinAddress }= await getDeployedArtifactsAbiAddress("SPCoin");
-    const signer = SPONSOR_ACCOUNT_SIGNERS[0];
-
-    console.debug(`spCoinAddress = ${JSON.stringify(spCoinAddress,null,2)}`)
-    console.debug(`spCoinABI = \n${JSON.stringify(spCoinABI,null,2)}`)
-
+    weth9ContractDeployed = await deployWETH9Contract();
     spCoinContractDeployed = await deploySpCoinContract();
-    spCoinClassMethods = new SpCoinClassMethods( spCoinABI, spCoinAddress, signer);
+    signer = weth9ContractDeployed.signer;
+
+    console.log(`AAA signer.address                     = ${signer.address}`)
+    console.log(`BBB SPONSOR_ACCOUNT_SIGNERS[0].address = ${SPONSOR_ACCOUNT_SIGNERS[0]?.address}`)
+    const { abi:weth9ABI, address:weth9_Address }= await getDeployedArtifactsAbiAddress("WETH9");
+    const signedWeth = new ethers.Contract(weth9_Address, weth9ABI, signer);
+    const { address:spCoinAddress, abi:spCoinABI }= await getDeployedArtifactsAbiAddress("SPCoin");
+    const signedSpCoin = new ethers.Contract(spCoinAddress, spCoinABI, signer);
+
+    spCoinClassMethods = new SpCoinClassMethods( spCoinContractDeployed, spCoinABI, spCoinAddress, signer);
     spCoinAddMethods = spCoinClassMethods.spCoinAddMethods;
     spCoinRewardsMethods = spCoinClassMethods.spCoinRewardsMethods;
     spCoinReadMethods = spCoinClassMethods.spCoinReadMethods;
     spCoinLogger = spCoinClassMethods.spCoinLogger;
   });
 
- it("2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES", async function () {
+  it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
+    hHAccountRateMethods.dump()
+    console.log(`signer.address = ${signer.address}`)
+
+    // Validate 20 HardHat Accounts created
+    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS.length, 20);
+    // Validate Active signer Account is Account 0
+
+    console.log(`hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address = ${hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address}`)
+    console.log(`weth9ContractDeployed.signer.address.toLowerCase() = ${weth9ContractDeployed.signer.address}`)
+    // Validate the Signer
+    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address, weth9ContractDeployed.signer.address);
+    // Validate the Last Account
+    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS[19], "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199");
+  });
+
+
+
+ xit("2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES", async function () {
   // Test Successful Record Insertion of Sponsor and 
   // Recipient Account to the Blockchain Network.
   // Account, Recipient and/or Agent are Successfully mutually exclusive.

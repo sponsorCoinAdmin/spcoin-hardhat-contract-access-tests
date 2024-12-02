@@ -19,12 +19,6 @@ class HHAccountRateMethods {
     this.SPONSOR_ACCOUNT_KEYS = this.RECIPIENT_ACCOUNT_KEYS = this.AGENT_ACCOUNT_KEYS = accounts;
   };
 
-  initSPCoinHHTest = async () => {
-    const hHAccountRateMethods = await this.initHHAccounts();
-    // console.log(`hHAccountRateMethods = ${JSON.stringify(hHAccountRateMethods)}`)
-    // this.dump();
-   }
-  
   dump = () => {
     console.log('CLASS HHAccountRateMethods() DUMP}')
     console.log(`SPONSOR_ACCOUNT_SIGNERS = ${this.SPONSOR_ACCOUNT_SIGNERS}`)
