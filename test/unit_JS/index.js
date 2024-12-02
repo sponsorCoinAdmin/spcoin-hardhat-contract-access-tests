@@ -8,7 +8,7 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deploySpCoinContract, getDeployedArtifactsAbiAddress } = require("../lib/deployContract");
-const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_Methods.js"); 
+const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_Methods_NEW.js"); 
 
 let spCoinContractDeployed;
 let spCoinClassMethods;
@@ -27,43 +27,21 @@ let BURN_ACCOUNT;
 describe("spCoinContract", function () {
   beforeEach(async () => {
 
-    // hHAccountRateMethods = new HHAccountRateMethods();
-    // await hHAccountRateMethods.initHHAccounts()
-    // // hHAccountRateMethods.dump()
-    // SPONSOR_ACCOUNT_SIGNERS = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS;
-    // RECIPIENT_ACCOUNT_KEYS = hHAccountRateMethods.RECIPIENT_ACCOUNT_KEYS;
-    // SPONSOR_ACCOUNT_KEYS = hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS;
-    // RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
-    // BURN_ACCOUNT = hHAccountRateMethods.BURN_ACCOUNT;
-    // const { abi:spCoinABI, address:spCoinAddress }= await getDeployedArtifactsAbiAddress("SPCoin");
-    // let signer = SPONSOR_ACCOUNT_SIGNERS[0];
-
-    // console.debug(`spCoinAddress = ${JSON.stringify(spCoinAddress,null,2)}`)
-    // console.debug(`spCoinABI = \n${JSON.stringify(spCoinABI,null,2)}`)
-
-    // spCoinContractDeployed = await deploySpCoinContract();
-    // spCoinClassMethods = new SpCoinClassMethods( spCoinABI, spCoinAddress, signer);
-    // spCoinAddMethods = spCoinClassMethods.spCoinAddMethods;
-    // spCoinRewardsMethods = spCoinClassMethods.spCoinRewardsMethods;
-    // spCoinReadMethods = spCoinClassMethods.spCoinReadMethods;
-    // spCoinLogger = spCoinClassMethods.spCoinLogger;
-
-
     hHAccountRateMethods = new HHAccountRateMethods();
     await hHAccountRateMethods.initHHAccounts()
     SPONSOR_ACCOUNT_SIGNERS = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS;
+    signer = SPONSOR_ACCOUNT_SIGNERS[0];
     weth9ContractDeployed = await deployWETH9Contract();
     spCoinContractDeployed = await deploySpCoinContract();
-    signer = weth9ContractDeployed.signer;
 
-    console.log(`AAA signer.address                     = ${signer.address}`)
-    console.log(`BBB SPONSOR_ACCOUNT_SIGNERS[0].address = ${SPONSOR_ACCOUNT_SIGNERS[0]?.address}`)
-    const { abi:weth9ABI, address:weth9_Address }= await getDeployedArtifactsAbiAddress("WETH9");
-    const signedWeth = new ethers.Contract(weth9_Address, weth9ABI, signer);
-    const { address:spCoinAddress, abi:spCoinABI }= await getDeployedArtifactsAbiAddress("SPCoin");
-    const signedSpCoin = new ethers.Contract(spCoinAddress, spCoinABI, signer);
+    console.log(`BBB SPONSOR_ACCOUNT_SIGNERS = ${SPONSOR_ACCOUNT_SIGNERS}`)
+    console.log(`BBB spCoinContractDeployed.signer = ${spCoinContractDeployed.signer}`)
+    console.log(`CCC SPONSOR_ACCOUNT_SIGNERS[0].signer = ${SPONSOR_ACCOUNT_SIGNERS[0].signer}`)
 
-    spCoinClassMethods = new SpCoinClassMethods( spCoinContractDeployed, spCoinABI, spCoinAddress, signer);
+    const {address:spCoinAddress, abi:spCoinABI }= await getDeployedArtifactsAbiAddress("SPCoin");
+    // const signedSpCoin = new ethers.Contract(spCoinAddress, spCoinABI, signer);
+
+    spCoinClassMethods = new SpCoinClassMethods(spCoinABI, spCoinAddress, signer);
     spCoinAddMethods = spCoinClassMethods.spCoinAddMethods;
     spCoinRewardsMethods = spCoinClassMethods.spCoinRewardsMethods;
     spCoinReadMethods = spCoinClassMethods.spCoinReadMethods;
