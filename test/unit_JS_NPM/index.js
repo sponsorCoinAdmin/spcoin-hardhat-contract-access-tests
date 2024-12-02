@@ -2,7 +2,7 @@ const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
 const { deploySpCoinContract, getDeployedArtifactsAbiAddress } = require("../lib/deployContract");
-const { SpCoinClassMethods } = require("../../spcoin-access-modules/spCoin_JS_Methods.js"); 
+const { SpCoinClassMethods } = require("../..//spcoin-access-modules/spCoin_JS_Methods"); 
 // import { SpCoinClassMethods } from "@sponsorcoin/spcoin-access-modules/spCoin_JS_Methods"; 
 
 let spCoinContractDeployed;
