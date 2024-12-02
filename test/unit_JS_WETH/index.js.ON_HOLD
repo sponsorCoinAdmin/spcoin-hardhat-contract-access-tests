@@ -34,7 +34,7 @@ describe("WETH9 Contract Deployed", function () {
   });
 
   // ToDo: BROKE FIX
-  xit("2. <TYPE SCRIPT> VALIDATE DEPLOYED CONTRACT BY GETTING SIGNER and TEST ACCOUNT[5] BALANCE_OF", async function () {
+  it("2. <TYPE SCRIPT> VALIDATE DEPLOYED CONTRACT BY GETTING SIGNER and TEST ACCOUNT[5] BALANCE_OF", async function () {
     const initialBalance = 10000000000000000000000n;
     const account5 = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[5];
     const signerBalance = await ethers.provider.getBalance(signer.address);
@@ -49,7 +49,7 @@ describe("WETH9 Contract Deployed", function () {
     assert.equal(account5Balance, initialBalance);
   });
 
-  xit("3. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Contract with Sinner account[0]", async function () {
+  it("3. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Contract with Sinner account[0]", async function () {
     const signedWeth = WETH9ContractDeployed.connect(signer);
     const wrapEthAmount = ethers.utils.parseEther("2");
     const wrapWeiAmount = "5";
@@ -73,7 +73,7 @@ describe("WETH9 Contract Deployed", function () {
     console.log(`5. AFTER WRAP: Wrap Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
   });
 
-  xit("4. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
+  it("4. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
     const { abi:weth9ABI, address:weth9_Address }= await getDeployedArtifactsAbiAddress("WETH9");
     const signedWeth = new ethers.Contract(weth9_Address, weth9ABI, signer);
 
@@ -99,7 +99,7 @@ describe("WETH9 Contract Deployed", function () {
     console.log(`5. AFTER WRAP: Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
   });
 
-  xit("5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
+  it("5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
     const signedWeth = await getWeth9Contract(signer);
 
     const wrapEthAmount = ethers.utils.parseEther("2");
