@@ -16,7 +16,7 @@ let SPONSOR_ACCOUNT_SIGNERS;
 let SPONSOR_ACCOUNT_KEYS;
 let RECIPIENT_ACCOUNT_KEYS; 
 let RECIPIENT_RATES;
-let BURN_ACCOUNT;
+let BURN_ADDRESS;
 
 describe("spCoinContract", function () {
   beforeEach(async () => {
@@ -27,7 +27,7 @@ describe("spCoinContract", function () {
     RECIPIENT_ACCOUNT_KEYS = hHAccountRateMethods.RECIPIENT_ACCOUNT_KEYS;
     SPONSOR_ACCOUNT_KEYS = hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS;
     RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
-    BURN_ACCOUNT = hHAccountRateMethods.BURN_ACCOUNT;
+    BURN_ADDRESS = hHAccountRateMethods.BURN_ADDRESS;
     const { abi:spCoinABI, address:spCoinAddress }= await getDeployedArtifactsAbiAddress("SPCoin");
     const signer = SPONSOR_ACCOUNT_SIGNERS[0]
 

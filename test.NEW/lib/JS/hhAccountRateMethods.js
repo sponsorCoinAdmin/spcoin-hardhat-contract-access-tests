@@ -5,7 +5,7 @@ class HHAccountRateMethods {
     this.RECIPIENT_ACCOUNT_KEYS;
     this.AGENT_ACCOUNT_KEYS;
     this.RECIPIENT_RATES = this.AGENT_RATES = [0,1,2,3,4,5,6,7,8,9,10];
-    this.BURN_ACCOUNT = "0x0000000000000000000000000000000000000000";
+    this.BURN_ADDRESS = "0x0000000000000000000000000000000000000000";
   }
 
   initHHAccounts = async ( ) => {
@@ -30,7 +30,7 @@ class HHAccountRateMethods {
     console.log(`SPONSOR_ACCOUNT_SIGNERS = ${this.SPONSOR_ACCOUNT_SIGNERS}`)
     console.log(`SPONSOR_ACCOUNT_KEYS = ${this.SPONSOR_ACCOUNT_KEYS}`)
     console.log(`RATES = ${this.RATES}`)
-    console.log(`BURN_ACCOUNT = ${this.BURN_ACCOUNT}`)
+    console.log(`BURN_ADDRESS = ${this.BURN_ADDRESS}`)
   }
 }
 

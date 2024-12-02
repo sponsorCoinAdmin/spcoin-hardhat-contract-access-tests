@@ -120,7 +120,7 @@ constructor(_spCoinContractDeployed) {
       _sponsorSigner,
       _recipientKey,
       _recipientRateKey,
-        BURN_ACCOUNT,
+        BURN_ADDRESS,
         0,
       _transactionQty);
 
@@ -177,7 +177,7 @@ constructor(_spCoinContractDeployed) {
       _sponsorSigner,
       _recipientKey,
       _recipientRateKey,
-        BURN_ACCOUNT,
+        BURN_ADDRESS,
         0,
       _transactionQty,
       _transactionBackDate);

@@ -13,7 +13,7 @@ initSPCoinHHTest = async () => {
   SPONSOR_ACCOUNT_SIGNERS = hhTestElements.signers;
   SPONSOR_ACCOUNT_KEYS = RECIPIENT_ACCOUNT_KEYS = AGENT_ACCOUNT_KEYS = hhTestElements.accounts;
   TRANSACTION_QTY = RECIPIENT_RATES = AGENT_RATES = hhTestElements.rates;
-  BURN_ACCOUNT = hhTestElements.burnAddress;
+  BURN_ADDRESS = hhTestElements.burnAddress;
 }
 
 initSPCoinTestConnect = async () => {
