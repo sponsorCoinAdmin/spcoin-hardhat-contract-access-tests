@@ -113,7 +113,6 @@ describe("WETH9 Contract Deployed", function () {
 
   class wethMethodsClass {
     constructor(_weth9Address, _weth9ABI, _signer, _dump=true) {
-      this.dump=_dump;
       this.action;
       this.beforeEthBalance;
       this.beforeWethBalance;
@@ -124,7 +123,14 @@ describe("WETH9 Contract Deployed", function () {
       this.weth9ABI = _weth9ABI;
       this._signer = _signer;
       this.signedWeth = new ethers.Contract(weth9Address, weth9ABI, signer);
-      console.log(`EXECUTING: wethMethods.constructor this._signer.address  = ${this._signer.address}`);
+      this.setDump(_dump);
+      this.logLine("-",80)
+      this.dumpLog(`EXECUTING: wethMethods.constructor this._signer.address  = ${this._signer.address}`);
+      this.logLine("-",80)
+    }
+
+    setDump = (_dumpMode) => {
+      this.dump=_dumpMode;
     }
 
     initializeDump = async(_address) => {
@@ -138,15 +144,24 @@ describe("WETH9 Contract Deployed", function () {
       if(this.dump) {
         this.afterEthBalance = await this.ethBalance(_address);
         this.afterWethBalance = await this.wethBalance(_address);
-        console.log(`==========================================================================================`);
-        console.log(`this.beforeEthBalance  = ${this.beforeEthBalance}`);
-        console.log(`this.beforeWethBalance = ${this.beforeWethBalance}`);
-        console.log(this.action);
-        console.log(`this.afterEthBalance   = ${this.afterEthBalance}`);
-        console.log(`this.afterWethBalance  = ${this.afterWethBalance}`);
-        console.log(`Gas Fee                = ${(this.beforeEthBalance -  this.afterWethBalance) - this.weiDeductionAmount}`);
-        console.log(`==========================================================================================`);
+        // this.dumpLog(`==========================================================================================`);
+        this.dumpLog(`this.beforeEthBalance  = ${this.beforeEthBalance}`);
+        this.dumpLog(`this.beforeWethBalance = ${this.beforeWethBalance}`);
+        this.dumpLog(this.action);
+        this.dumpLog(`this.afterEthBalance   = ${this.afterEthBalance}`);
+        this.dumpLog(`this.afterWethBalance  = ${this.afterWethBalance}`);
+        this.dumpLog(`Gas Fee (ETH)          = ${(this.beforeEthBalance - this.afterWethBalance) - this.weiDeductionAmount}`);
+        this.logLine()
       }
+    }
+
+    logLine = (char="=", length=80) => {
+      this.dumpLog( char.repeat(length));
+    }
+
+    dumpLog = (str) => {
+      if (this.dump)
+        console.log( str);
     }
   
     depositETH = async (_ethAmount) => {
@@ -157,7 +172,7 @@ describe("WETH9 Contract Deployed", function () {
       if(this.dump) {
         this.afterEthBalance = this.ethBalance(this._signer.address);
         this.afterWethBalance = this.wethBalance(this._signer.address);
-      //  console.log(`wethMethods.depositETH:tx = ${JSON.stringify(tx,null,2)}`);
+      //  this.dumpLog(`wethMethods.depositETH:tx = ${JSON.stringify(tx,null,2)}`);
       }
       await this.finalizeDump(this._signer.address);
       return tx;
@@ -168,18 +183,19 @@ describe("WETH9 Contract Deployed", function () {
       this.weiDeductionAmount = _weiAmount;
       this.action = `EXECUTING: wethMethods.depositWEI(${_weiAmount})`;
       const tx = await this.signedWeth.deposit({value: _weiAmount});
-      // console.log(`wethMethods.depositWEI:tx = ${JSON.stringify(tx,null,2)}`);
+      // this.dumpLog(`wethMethods.depositWEI:tx = ${JSON.stringify(tx,null,2)}`);
       await this.finalizeDump(this._signer.address);
       return tx;
     }
 
     withdrawETH = async (_ethAmount) => {
       await this.initializeDump(this._signer.address);
-      this.weiDeductionAmount = -ethers.utils.parseEther(_ethAmount);
+      const weiAmount = ethers.utils.parseEther(_ethAmount);
+      this.weiDeductionAmount = -weiAmount;
       this.action = `EXECUTING: wethMethods.withdrawETH(${_ethAmount})`;
 
-      const tx = await this.withdrawWEI(ethers.utils.parseEther(_ethAmount))
-      // console.log(`wethMethods.depositETH:tx = ${JSON.stringify(tx,null,2)}`);
+      const tx = await this.signedWeth.withdraw(weiAmount);
+      // this.dumpLog(`wethMethods.depositETH:tx = ${JSON.stringify(tx,null,2)}`);
       await this.finalizeDump(this._signer.address);
       return tx;
     }
@@ -189,8 +205,8 @@ describe("WETH9 Contract Deployed", function () {
       this.weiDeductionAmount = -_weiAmount;
       this.action = `EXECUTING: wethMethods.withdrawWEI(${_weiAmount})`;
 
-      const tx = await this.signedWeth.withdraw({value: _weiAmount});
-      // console.log(`wethMethods.depositWEI:tx = ${JSON.stringify(tx,null,2)}`);
+      const tx = await this.signedWeth.withdraw(_weiAmount);
+      // this.dumpLog(`wethMethods.depositWEI:tx = ${JSON.stringify(tx,null,2)}`);
       await this.finalizeDump(this._signer.address);
       return tx;
     }
@@ -208,21 +224,15 @@ describe("WETH9 Contract Deployed", function () {
 
   it("5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
     let tx;
-    wethMethods = new wethMethodsClass( weth9Address, weth9ABI, signer )
 
     const signedWeth = await getWeth9Contract(signer);
-    const ethStrAmount = "32";
-    const wrapEthAmount = ethers.utils.parseEther("2");
+    wethMethods = new wethMethodsClass( weth9Address, weth9ABI, signer )
+    const ethDepositAmount = "2";
+    const ethWithdrawAmount = "1";
 
-    let beforeEthBalance = await wethMethods.ethBalance(signer.address);
-    let signerWethBalance = await wethMethods.wethBalance(signer.address);
-
-    console.log(`1. BEFORE WRAP: signer(${signer.address}) ETH Balance = ${beforeEthBalance}`);
-    console.log(`2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
-
-    tx = await signedWeth.deposit({value: wrapEthAmount})
+    // tx = await signedWeth.deposit({value: wrapEthAmount})
     
-    tx = await wethMethods.depositETH(ethStrAmount)
+    tx = await wethMethods.depositETH(ethDepositAmount)
     
     // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
 
@@ -230,15 +240,11 @@ describe("WETH9 Contract Deployed", function () {
     let afterEthBalance = await wethMethods.ethBalance(signer.address);
     // let afterEthBalance = await ethers.provider.getBalance(signer.address);
 
-    console.log(`3. AFTER WRAP WETH9Contract signer(${signerWethBalance}) WETH Balance = ${signerWethBalance}`);
-    console.log(`4. AFTER WRAP: signer(${signer.address}) ETH Balance = ${afterEthBalance}`);
-    console.log(`5. AFTER WRAP: Wrap Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
+    tx = await wethMethods.withdrawETH(ethWithdrawAmount)
+    // await signedWeth.withdraw(ethers.utils.parseEther("1"));
 
-    await signedWeth.withdraw(ethers.utils.parseEther("1"));
-    signerWethBalance = await signedWeth.balanceOf(signer.address)
-    afterEthBalance = await ethers.provider.getBalance(signer.address);
-
-    console.log(`6. AFTER UN-WRAP WETH9Contract signer(${signerWethBalance}) WETH Balance = ${signerWethBalance}`);
-    console.log(`7. AFTER UN-WRAP: signer(${signer.address}) ETH Balance = ${afterEthBalance}`);
+    // await signedWeth.withdraw(ethers.utils.parseEther("1"));
+    // signerWethBalance = await signedWeth.balanceOf(signer.address)
+    // afterEthBalance = await ethers.provider.getBalance(signer.address);
   });
 });
