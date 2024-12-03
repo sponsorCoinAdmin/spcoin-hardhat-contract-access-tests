@@ -119,6 +119,7 @@ describe("WETH9 Contract Deployed", function () {
       this.beforeWethBalance;
       this.afterEthBalance;
       this.afterWethBalance;
+      this.weiDeductionAmount;
       this.weth9Address = _weth9Address;
       this.weth9ABI = _weth9ABI;
       this._signer = _signer;
@@ -137,21 +138,22 @@ describe("WETH9 Contract Deployed", function () {
       if(this.dump) {
         this.afterEthBalance = await this.ethBalance(_address);
         this.afterWethBalance = await this.wethBalance(_address);
-        console.log(`================================================================================`);
-        console.log(`this.beforeEthBalance = ${this.beforeEthBalance}`);
+        console.log(`==========================================================================================`);
+        console.log(`this.beforeEthBalance  = ${this.beforeEthBalance}`);
         console.log(`this.beforeWethBalance = ${this.beforeWethBalance}`);
         console.log(this.action);
-        console.log(`this.afterEthBalance = ${this.afterEthBalance}`);
-        console.log(`this.afterWethBalance = ${this.afterWethBalance}`);
-        console.log(`================================================================================`);
+        console.log(`this.afterEthBalance   = ${this.afterEthBalance}`);
+        console.log(`this.afterWethBalance  = ${this.afterWethBalance}`);
+        console.log(`Gas Fee                = ${(this.beforeEthBalance -  this.afterWethBalance) - this.weiDeductionAmount}`);
+        console.log(`==========================================================================================`);
       }
     }
   
     depositETH = async (_ethAmount) => {
       await this.initializeDump(this._signer.address);
       this.action = `EXECUTING: wethMethods.depositETH(${_ethAmount})`;
-      let wei = ethers.utils.parseEther(_ethAmount);
-      const tx = await this.signedWeth.deposit({value: wei});
+      this.weiDeductionAmount = ethers.utils.parseEther(_ethAmount);
+      const tx = await this.signedWeth.deposit({value: this.weiDeductionAmount});
       if(this.dump) {
         this.afterEthBalance = this.ethBalance(this._signer.address);
         this.afterWethBalance = this.wethBalance(this._signer.address);
@@ -163,6 +165,7 @@ describe("WETH9 Contract Deployed", function () {
 
     depositWEI = async (_weiAmount) => {
       await this.initializeDump(this._signer.address);
+      this.weiDeductionAmount = _weiAmount;
       this.action = `EXECUTING: wethMethods.depositWEI(${_weiAmount})`;
       const tx = await this.signedWeth.deposit({value: _weiAmount});
       // console.log(`wethMethods.depositWEI:tx = ${JSON.stringify(tx,null,2)}`);
@@ -172,6 +175,7 @@ describe("WETH9 Contract Deployed", function () {
 
     withdrawETH = async (_ethAmount) => {
       await this.initializeDump(this._signer.address);
+      this.weiDeductionAmount = -ethers.utils.parseEther(_ethAmount);
       this.action = `EXECUTING: wethMethods.withdrawETH(${_ethAmount})`;
 
       const tx = await this.withdrawWEI(ethers.utils.parseEther(_ethAmount))
@@ -182,6 +186,7 @@ describe("WETH9 Contract Deployed", function () {
 
     withdrawWEI = async (_weiAmount) => {
       await this.initializeDump(this._signer.address);
+      this.weiDeductionAmount = -_weiAmount;
       this.action = `EXECUTING: wethMethods.withdrawWEI(${_weiAmount})`;
 
       const tx = await this.signedWeth.withdraw({value: _weiAmount});
