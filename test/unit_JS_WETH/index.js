@@ -225,26 +225,14 @@ describe("WETH9 Contract Deployed", function () {
   it("5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
     let tx;
 
-    const signedWeth = await getWeth9Contract(signer);
+    // const signedWeth = await getWeth9Contract(signer);
     wethMethods = new wethMethodsClass( weth9Address, weth9ABI, signer )
     const ethDepositAmount = "2";
     const ethWithdrawAmount = "1";
 
-    // tx = await signedWeth.deposit({value: wrapEthAmount})
-    
     tx = await wethMethods.depositETH(ethDepositAmount)
-    
-    // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
-
-    signerWethBalance =  await wethMethods.wethBalance(signer.address);
-    let afterEthBalance = await wethMethods.ethBalance(signer.address);
-    // let afterEthBalance = await ethers.provider.getBalance(signer.address);
-
+    // console.log(`tx(${wethMethods.depositETH(ethDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
     tx = await wethMethods.withdrawETH(ethWithdrawAmount)
-    // await signedWeth.withdraw(ethers.utils.parseEther("1"));
-
-    // await signedWeth.withdraw(ethers.utils.parseEther("1"));
-    // signerWethBalance = await signedWeth.balanceOf(signer.address)
-    // afterEthBalance = await ethers.provider.getBalance(signer.address);
+    // console.log(`tx(${wethMethods.withdrawETH(ethWithdrawAmount)} = ${JSON.stringify(tx,null,2)}`);
   });
 });
