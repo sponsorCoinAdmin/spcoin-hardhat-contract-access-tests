@@ -1,11 +1,11 @@
 import { assert } from 'chai';
 import { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year, month, millennium } from "../../spcoin-access-modules/lib/utils/dateTime"; 
-import { SpCoinClassMethods } from "@sponsorcoin/spcoin-access-modules/spCoin_JS_Methods"; 
+import { SpCoinClassModules } from "@sponsorcoin/spcoin-access-modules/spCoin_JS_Methods"; 
 import { deploySpCoinContract, getDeployedArtifactsAbiAddress } from "../lib/JS/deployContract";
 import { HHAccountRateMethods } from "../lib/JS/hhAccountRateMethods";
 
 let spCoinContractDeployed;
-let spCoinClassMethods;
+let spCoinClassModules;
 let spCoinAddMethods;
 let spCoinRewardsMethods;
 let spCoinReadMethods;
@@ -32,11 +32,11 @@ describe("spCoinContract", function () {
     const signer = SPONSOR_ACCOUNT_SIGNERS[0]
 
     spCoinContractDeployed = await deploySpCoinContract();
-    spCoinClassMethods = new SpCoinClassMethods(spCoinABI, spCoinAddress, signer);
-    spCoinAddMethods = spCoinClassMethods.spCoinAddMethods;
-    spCoinRewardsMethods = spCoinClassMethods.spCoinRewardsMethods;
-    spCoinReadMethods = spCoinClassMethods.spCoinReadMethods;
-    spCoinLogger = spCoinClassMethods.spCoinLogger;
+    spCoinClassModules = new SpCoinClassModules(spCoinABI, spCoinAddress, signer);
+    spCoinAddMethods = spCoinClassModules.spCoinAddMethods;
+    spCoinRewardsMethods = spCoinClassModules.spCoinRewardsMethods;
+    spCoinReadMethods = spCoinClassModules.spCoinReadMethods;
+    spCoinLogger = spCoinClassModules.spCoinLogger;
   });
 
  it("2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES", async function () {

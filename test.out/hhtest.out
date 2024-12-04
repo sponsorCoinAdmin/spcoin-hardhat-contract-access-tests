@@ -96,7 +96,7 @@ hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address = 0xf39Fd6e51aad88F6F4ce
     ✔ 1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS
 EXECUTING: getDeployedArtifactsAbiAddress(SPCoin)
 ABI_FILE_PATH = artifacts/contracts/SPCoin.sol/SPCoin.json
-addBackDatedSponsorship = async([object Object], 0x70997970c51812dc3a010c7d01b50e0d17dc79c8, 9, 100, 1701795768.0064)
+addBackDatedSponsorship = async([object Object], 0x70997970c51812dc3a010c7d01b50e0d17dc79c8, 9, 100, 1701797793.0064)
 
 
 *** AFTER CREATE ******************************************************************************************************
@@ -109,7 +109,7 @@ DUMP JSON OBJECT
   "name": "sponsorCoin_V001",
   "symbol": "SPCT_V001",
   "version": "_V001",
-  "creationTime": "December 4, 2024 at 05:44:52 PM EST",
+  "creationTime": "December 4, 2024 at 06:18:15 PM EST",
   "location": "America/Toronto",
   "initialTotalSupply": "1000000000000000000000000000",
   "totalSupply": "1000000000000000000000000000",
@@ -122,9 +122,9 @@ DUMP JSON OBJECT
     {
       "TYPE": "--ACCOUNT--",
       "accountKey": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "balanceOf": "999999989998904836260186940",
+      "balanceOf": "999999989998842092504260150",
       "stakedSPCoins": "100000000000000000000",
-      "creationTime": "December 4, 2024 at 05:44:58 PM EST",
+      "creationTime": "December 4, 2024 at 06:18:25 PM EST",
       "verified": "false",
       "sponsorAccountList": [],
       "recipientAccountList": [
@@ -136,20 +136,20 @@ DUMP JSON OBJECT
         {
           "TYPE": "--RECIPIENT_RECORD--",
           "recipientKey": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-          "creationTime": "December 4, 2024 at 05:44:58 PM EST",
+          "creationTime": "December 4, 2024 at 06:18:25 PM EST",
           "stakedSPCoins": "100000000000000000000",
           "recipientRateList": [
             {
               "TYPE": "--RECIPIENT_RATE--",
               "recipientRate": 9,
-              "creationTime": "December 5, 2023 at 12:02:48 PM EST",
-              "lastUpdateTime": "December 4, 2024 at 05:45:09 PM EST",
+              "creationTime": "December 5, 2023 at 12:36:33 PM EST",
+              "lastUpdateTime": "December 4, 2024 at 06:18:32 PM EST",
               "stakedSPCoins": "100000000000000000000",
               "transactions": [
                 {
                   "TYPE": "--STAKING TRANSACTION RECORD--",
                   "location": "America/Toronto",
-                  "insertionTime": "December 5, 2023 at 12:02:48 PM EST",
+                  "insertionTime": "December 5, 2023 at 12:36:33 PM EST",
                   "quantity": "100000000000000000000"
                 }
               ],
@@ -158,12 +158,12 @@ DUMP JSON OBJECT
           ]
         }
       ],
-      "stakingRewards": "89998904836260186940",
+      "stakingRewards": "89998842092504260150",
       "stakingRewardList": {
         "TYPE": "--REWARDS STRUCTURE--",
         "sponsorRewardsList": {
           "TYPE": "SPONSOR REWARDS",
-          "stakingRewards": "89998904836260186940"
+          "stakingRewards": "89998842092504260150"
         },
         "recipientRewardsList": {
           "TYPE": "RECIPIENT REWARDS",
@@ -176,17 +176,17 @@ DUMP JSON OBJECT
             {
               "TYPE": "--REWARD ACCOUNT--",
               "sourceKey": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
-              "stakingRewards": "89998904836260186940",
+              "stakingRewards": "89998842092504260150",
               "rateList": [
                 {
                   "TYPE": "--REWARD RATE--",
                   "rate": "10",
-                  "stakingRewards": "89998904836260186940",
+                  "stakingRewards": "89998842092504260150",
                   "rewardTransactionList": [
                     {
                       "TYPE": "--REWARD TRANSACTION--",
-                      "updateTime": "December 4, 2024 at 05:45:09 PM EST",
-                      "stakingRewards": "89998904836260186940"
+                      "updateTime": "December 4, 2024 at 06:18:32 PM EST",
+                      "stakingRewards": "89998842092504260150"
                     }
                   ]
                 }
@@ -200,9 +200,9 @@ DUMP JSON OBJECT
     {
       "TYPE": "--ACCOUNT--",
       "accountKey": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-      "balanceOf": "8999890483626018694",
+      "balanceOf": "8999884209250426015",
       "stakedSPCoins": "0",
-      "creationTime": "December 4, 2024 at 05:44:58 PM EST",
+      "creationTime": "December 4, 2024 at 06:18:25 PM EST",
       "verified": "false",
       "sponsorAccountList": [
         "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
@@ -211,7 +211,7 @@ DUMP JSON OBJECT
       "agentAccountList": [],
       "agentParentRecipientAccountList": [],
       "recipientRecordList": [],
-      "stakingRewards": "8999890483626018694",
+      "stakingRewards": "8999884209250426015",
       "stakingRewardList": {
         "TYPE": "--REWARDS STRUCTURE--",
         "sponsorRewardsList": {
@@ -220,7 +220,7 @@ DUMP JSON OBJECT
         },
         "recipientRewardsList": {
           "TYPE": "RECIPIENT REWARDS",
-          "stakingRewards": "8999890483626018694"
+          "stakingRewards": "8999884209250426015"
         },
         "agentRewardsList": {
           "TYPE": "AGENT REWARDS",
@@ -234,8 +234,8 @@ DUMP JSON OBJECT
 ********************************************************************************
 *** AFTER DELETE ***************************************************************
 ********************************************************************************
-    ✔ 2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES (19084ms)
+    ✔ 2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES (18846ms)
 
 
-  2 passing (32s)
+  2 passing (48s)
 
