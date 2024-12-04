@@ -6,7 +6,6 @@
  |  SPCoin                ·                22.247 (0.000)  ·                23.782 (0.000)  │
  ·------------------------|--------------------------------|--------------------------------·
 
-
   WETH9 Contract Deployed
 EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
 ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
