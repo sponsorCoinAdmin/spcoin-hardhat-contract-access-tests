@@ -1,6 +1,6 @@
 */artifacts/
 node_modules
-test.out
+*/hhtest.out
 /.deps
 /.vscode/
 .env
