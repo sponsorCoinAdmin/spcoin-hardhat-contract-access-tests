@@ -1,14 +1,62 @@
-const { LOG_MODE } = require("./lib/hardhatSetup/hhConnectSetup");
-const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year, month , millennium } = require("../../prod/lib/utils/dateTime"); 
-const { SpCoinRewardsMethods } = require("../../prod/lib/spCoinRewardsMethods"); 
-const { SpCoinAddMethods } = require("../../prod/lib/spCoinRewardsMethods"); 
+const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year, month, millennium } = require( "../../spcoin-access-modules/lib/utils/dateTime"); 
+const { assert } = require ('chai');
+const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
+const { deploySpCoinContract, getDeployedArtifactsAbiAddress } = require("../lib/deployContract");
+// const { SpCoinClassMethods } = require("../../spcoin-access-modules/spCoin_JS_Methods"); 
+const { SpCoinClassMethods } = require("@sponsorcoin/spcoin-access-modules/spCoin_JS_Methods"); 
+
+let signer;
+let spCoinAddress;
+let spCoinABI;
+let spCoinContractDeployed;
+let hHAccountRateMethods;
+let SPONSOR_ACCOUNT_SIGNERS;
+let SPONSOR_ACCOUNT_KEYS;
+let RECIPIENT_ACCOUNT_KEYS; 
+let RECIPIENT_RATES;
+let BURN_ADDRESS;
 
 describe("spCoinContract", function () {
   beforeEach(async () => {
-    await initSPCoinTestConnect();
+
+    hHAccountRateMethods = new HHAccountRateMethods();
+    await hHAccountRateMethods.initHHAccounts()
+    SPONSOR_ACCOUNT_SIGNERS = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS;
+    SPONSOR_ACCOUNT_KEYS = hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS;
+    RECIPIENT_ACCOUNT_KEYS = hHAccountRateMethods.RECIPIENT_ACCOUNT_KEYS;
+    RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
+    BURN_ADDRESS =  hHAccountRateMethods.BURN_ADDRESS;
+
+    signer = SPONSOR_ACCOUNT_SIGNERS[0];
+    spCoinContractDeployed = await deploySpCoinContract();
+
+    const { address, abi } = await getDeployedArtifactsAbiAddress("SPCoin");
+    spCoinAddress = address;
+    spCoinABI = abi;
   });
 
- it("2. VALIDATE ADD TRANSACTION RATES", async function () {
+  it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
+    hHAccountRateMethods.dump();
+    console.log(`signer.address = ${signer.address}`);
+
+    // Validate 20 HardHat Accounts created
+    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS.length, 20);
+
+    // Validate Active signer Account is Account 0
+    console.log(`hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address = ${hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address}`)
+    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address, spCoinContractDeployed.signer.address);
+    
+    // Validate the Last Account
+    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS[19], "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199");
+  });
+
+ it("2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES", async function () {
+  let spCoinClassMethods = new SpCoinClassMethods(spCoinABI, spCoinAddress, signer);
+  let spCoinAddMethods = spCoinClassMethods.spCoinAddMethods;
+  let spCoinRewardsMethods = spCoinClassMethods.spCoinRewardsMethods;
+  let spCoinReadMethods = spCoinClassMethods.spCoinReadMethods;
+  let spCoinLogger = spCoinClassMethods.spCoinLogger;
+
   // Test Successful Record Insertion of Sponsor and 
   // Recipient Account to the Blockchain Network.
   // Account, Recipient and/or Agent are Successfully mutually exclusive.
@@ -311,7 +359,7 @@ describe("spCoinContract", function () {
   //   dateInSeconds() - year
   // );
 
-  let currDateInSecs = dateInSeconds();
+  // let currDateInSecs = dateInSeconds();
   
   await spCoinAddMethods.addBackDatedSponsorship(
     SPONSOR_ACCOUNT_SIGNERS[0],   // DEPOSIT ACCOUNT
@@ -321,8 +369,7 @@ describe("spCoinContract", function () {
     dateInSeconds() - year
   );
 
-
-  // await spCoinAddMethods.addBackDatedSponsorship(
+    // await spCoinAddMethods.addBackDatedSponsorship(
   //   SPONSOR_ACCOUNT_SIGNERS[0],   // DEPOSIT ACCOUNT
   //   RECIPIENT_ACCOUNT_KEYS[1],
   //   RECIPIENT_RATES[5],
