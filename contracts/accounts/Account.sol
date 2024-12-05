@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 /// @title ERC20 Contract
-import "../utils/StructSerialization.sol";
+import "../utils///StructSerialization.sol";
 
 contract Account is StructSerialization {
     constructor() {}

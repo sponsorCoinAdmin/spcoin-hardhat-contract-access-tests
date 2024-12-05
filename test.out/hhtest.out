@@ -7,9 +7,9 @@
  ·------------------------|--------------------------------|--------------------------------·
 
 
-  WETH9 Contract Deployed
-EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
-ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
+  spCoinContract
+EXECUTING: getDeployedArtifactsAbiAddress(SPCoin)
+ABI_FILE_PATH = artifacts/contracts/SPCoin.sol/SPCoin.json
 CLASS HHAccountRateMethods() DUMP}
 AAA SPONSOR_ACCOUNT_SIGNERS = [
   "<SignerWithAddress 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266>",
@@ -93,70 +93,149 @@ DDD RECIPIENT_RATES         = [
 BURN_ADDRESS                = 0x0000000000000000000000000000000000000000
 signer.address = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
 hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
-weth9ContractDeployed.signer.address.toLowerCase() = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
     ✔ 1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS
-EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
-ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
-1. signer(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) Balance = 9999944945996566921825
-2. account[5]([object Object]) Balance = 10000000000000000000000
-    ✔ 2. <TYPE SCRIPT> VALIDATE DEPLOYED CONTRACT BY GETTING SIGNER and TEST ACCOUNT[5] BALANCE_OF
-EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
-ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
-1. BEFORE WRAP: signer(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) ETH Balance = 9999925717204733847925
-2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = 0
-3. AFTER WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = 2000000000000000005
-4. AFTER WRAP: signer(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) ETH Balance = 9997925011367299067612
-5. AFTER WRAP: Wrap Gas Fees = 705837435191296
-    ✔ 3. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Contract with Sinner account[0] (153ms)
-EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
-ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
-1. BEFORE WRAP: signer(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) ETH Balance = 9997912912611765212087
-2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = 0
-3. AFTER WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = 2000000000000000005
-4. AFTER WRAP: signer(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) ETH Balance = 9995912462729716840076
-5. AFTER WRAP: Gas Fees = 449882048954368
-    ✔ 4. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Address with Sinner account[0] (154ms)
-EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
-ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
---------------------------------------------------------------------------------
-EXECUTING: wethMethods.constructor this.signer.address  = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
---------------------------------------------------------------------------------
-this.beforeEthBalance  = 9995904610328371993076
-this.beforeWethBalance = 0
-EXECUTING: wethMethods.depositETH(2)
-this.afterEthBalance   = 9993904419815529213894
-this.afterWethBalance  = 2000000000000000000
-Gas Fee (ETH)          = 9.991904610328372e+21
-================================================================================
-this.beforeEthBalance  = 9993904419815529213894
-this.beforeWethBalance = 2000000000000000000
-EXECUTING: wethMethods.withdrawETH(1)
-this.afterEthBalance   = 9994904285072108532518
-this.afterWethBalance  = 1000000000000000000
-Gas Fee (ETH)          = 9.99390441981553e+21
-================================================================================
-    ✔ 5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0] (227ms)
-EXECUTING: getDeployedArtifactsAbiAddress(WETH9)
-ABI_FILE_PATH = artifacts/contracts/WETH9.sol/WETH9.json
---------------------------------------------------------------------------------
-EXECUTING: wethMethods.constructor this.signer.address  = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
---------------------------------------------------------------------------------
-this.beforeEthBalance  = 10000000000000000000000
-this.beforeWethBalance = 0
-EXECUTING: wethMethods.depositETH(2)
-this.afterEthBalance   = 9997999868317217417796
-this.afterWethBalance  = 2000000000000000000
-Gas Fee (ETH)          = 9.996e+21
-================================================================================
-this.beforeEthBalance  = 9997999868317217417796
-this.beforeWethBalance = 2000000000000000000
-EXECUTING: wethMethods.withdrawETH(1)
-this.afterEthBalance   = 9998999773827561573732
-this.afterWethBalance  = 1000000000000000000
-Gas Fee (ETH)          = 9.997999868317218e+21
-================================================================================
-    ✔ 6. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[2] (188ms)
+EXECUTING: getDeployedArtifactsAbiAddress(SPCoin)
+ABI_FILE_PATH = artifacts/contracts/SPCoin.sol/SPCoin.json
+addBackDatedSponsorship = async([object Object], 0x70997970c51812dc3a010c7d01b50e0d17dc79c8, 9, 100, 1701849100.0064)
 
 
-  6 passing (10s)
+*** AFTER CREATE ******************************************************************************************************
+
+
+
+DUMP JSON OBJECT
+{
+  "TYPE": "--SPONSOR COIN HEADER--",
+  "name": "sponsorCoin_V001",
+  "symbol": "SPCT_V001",
+  "version": "_V001",
+  "creationTime": "December 5, 2024 at 08:33:51 AM EST",
+  "location": "America/Toronto",
+  "initialTotalSupply": "1000000000000000000000000000",
+  "totalSupply": "1000000000000000000000000000",
+  "decimals": "18",
+  "annualInflation": "10",
+  "totalBalanceOf": "999999900000000000000000000",
+  "totalStakedSPCoins": "100000000000000000000",
+  "totalStakingRewards": "0",
+  "accountRecords": [
+    {
+      "TYPE": "--ACCOUNT--",
+      "accountKey": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "balanceOf": "999999989998884872337846600",
+      "stakedSPCoins": "100000000000000000000",
+      "creationTime": "December 5, 2024 at 08:33:52 AM EST",
+      "verified": "false",
+      "sponsorAccountList": [],
+      "recipientAccountList": [
+        "0x70997970c51812dc3a010c7d01b50e0d17dc79c8"
+      ],
+      "agentAccountList": [],
+      "agentParentRecipientAccountList": [],
+      "recipientRecordList": [
+        {
+          "TYPE": "--RECIPIENT_RECORD--",
+          "recipientKey": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "creationTime": "December 5, 2024 at 08:33:52 AM EST",
+          "stakedSPCoins": "100000000000000000000",
+          "recipientRateList": [
+            {
+              "TYPE": "--RECIPIENT_RATE--",
+              "recipientRate": 9,
+              "creationTime": "December 6, 2023 at 02:51:40 AM EST",
+              "lastUpdateTime": "December 5, 2024 at 08:33:54 AM EST",
+              "stakedSPCoins": "100000000000000000000",
+              "transactions": [
+                {
+                  "TYPE": "--STAKING TRANSACTION RECORD--",
+                  "location": "America/Toronto",
+                  "insertionTime": "December 6, 2023 at 02:51:40 AM EST",
+                  "quantity": "100000000000000000000"
+                }
+              ],
+              "agentRecordList": []
+            }
+          ]
+        }
+      ],
+      "stakingRewards": "89998884872337846600",
+      "stakingRewardList": {
+        "TYPE": "--REWARDS STRUCTURE--",
+        "sponsorRewardsList": {
+          "TYPE": "SPONSOR REWARDS",
+          "stakingRewards": "89998884872337846600"
+        },
+        "recipientRewardsList": {
+          "TYPE": "RECIPIENT REWARDS",
+          "stakingRewards": "0"
+        },
+        "agentRewardsList": {
+          "TYPE": "AGENT REWARDS",
+          "stakingRewards": "0",
+          "rewardAccountList": [
+            {
+              "TYPE": "--REWARD ACCOUNT--",
+              "sourceKey": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+              "stakingRewards": "89998884872337846600",
+              "rateList": [
+                {
+                  "TYPE": "--REWARD RATE--",
+                  "rate": "10",
+                  "stakingRewards": "89998884872337846600",
+                  "rewardTransactionList": [
+                    {
+                      "TYPE": "--REWARD TRANSACTION--",
+                      "updateTime": "December 5, 2024 at 08:33:54 AM EST",
+                      "stakingRewards": "89998884872337846600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "location": "America/Toronto"
+    },
+    {
+      "TYPE": "--ACCOUNT--",
+      "accountKey": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "balanceOf": "8999888487233784660",
+      "stakedSPCoins": "0",
+      "creationTime": "December 5, 2024 at 08:33:52 AM EST",
+      "verified": "false",
+      "sponsorAccountList": [
+        "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+      ],
+      "recipientAccountList": [],
+      "agentAccountList": [],
+      "agentParentRecipientAccountList": [],
+      "recipientRecordList": [],
+      "stakingRewards": "8999888487233784660",
+      "stakingRewardList": {
+        "TYPE": "--REWARDS STRUCTURE--",
+        "sponsorRewardsList": {
+          "TYPE": "SPONSOR REWARDS",
+          "stakingRewards": "0"
+        },
+        "recipientRewardsList": {
+          "TYPE": "RECIPIENT REWARDS",
+          "stakingRewards": "8999888487233784660"
+        },
+        "agentRewardsList": {
+          "TYPE": "AGENT REWARDS",
+          "stakingRewards": "0"
+        }
+      },
+      "location": "America/Toronto"
+    }
+  ]
+}
+********************************************************************************
+*** AFTER DELETE ***************************************************************
+********************************************************************************
+    ✔ 2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES (3606ms)
+
+
+  2 passing (7s)
 
