@@ -1,8 +1,8 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsAbiAddress, getWeth9Contract } = require("../lib/deployContract.js");
-// const { WethMethods } = require("../../spcoin-access-modules/lib/utils/wethMethods.js");
-const { WethMethods } = require("@sponsorcoin/spcoin-access-modules/lib/utils/wethMethods.js"); 
+// const { WethMethods } = require("../../spcoin-access-modules/wethModule/wethMethods.js");
+const { WethMethods } = require("@sponsorcoin/spcoin-access-modules/wethModule/wethMethods.js"); 
 
 let signer;
 let weth9Address;
