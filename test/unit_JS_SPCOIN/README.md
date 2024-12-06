@@ -1,6 +1,6 @@
 # unit_JS_MODULES
 
-### To Run this test change the file name index.js.ON_HOLD to index.js.
+### To Run this test copy the file index.js.ON_HOLD to index.js in the same directory.
     If you have the alias setup you car run the test from the package root level by typing, "hhtest",
     which will run the test and put the output in directory {./rootHome}/test.out/hhtest.out.
     If you do not have the alias's menu installed, run the command "npx hardhat test". 
