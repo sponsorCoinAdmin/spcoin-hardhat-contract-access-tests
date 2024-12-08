@@ -3,6 +3,11 @@ const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsAbiAddress, getWeth9Contract } = require("../lib/deployContract.js");
 // const { WethMethods } = require("../../spcoin-access-modules/wethModule/wethMethods.js");
 const { WethMethods } = require("@sponsorcoin/spcoin-access-modules/wethModule/wethMethods.js"); 
+const { getDeployedWethAbi, 
+  getWeth9NetworkAddress, 
+  ETHEREUM,
+  POLYGON,
+  HARDHAT } = require("../../spcoin-access-modules/wethModule/utils.js");
 
 let signer;
 let weth9Address;
@@ -143,6 +148,27 @@ describe("WETH9 Contract Deployed", function () {
   it("7. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[5]", async function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[5];
+    // const signedWeth = await getWeth9Contract(signer);
+    const wethMethods = new WethMethods( weth9Address, weth9ABI, signer )
+    const weiDepositAmount = "2";
+    const weiWithdrawAmount = "1";
+
+    tx = await wethMethods.depositWEI(weiDepositAmount)
+    // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
+    tx = await wethMethods.withdrawWEI(weiWithdrawAmount)
+    // console.log(`tx(${wethMethods.withdrawETH(ethWithdrawAmount)} = ${JSON.stringify(tx,null,2)}`);
+  });
+
+  it("8. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[9]", async function () {
+    let tx;
+    const signer = SPONSOR_ACCOUNT_SIGNERS[9];
+
+    const weth9_HardHat = getWeth9NetworkAddress(HARDHAT);
+    console.log(`getWeth9NetworkAddress(HARDHAT) = ${weth9_HardHat}`)
+
+    const weth9ABI = await getDeployedWethAbi()
+    // console.log(`weth9ABI = ${weth9ABI}`)
+
     // const signedWeth = await getWeth9Contract(signer);
     const wethMethods = new WethMethods( weth9Address, weth9ABI, signer )
     const weiDepositAmount = "2";
