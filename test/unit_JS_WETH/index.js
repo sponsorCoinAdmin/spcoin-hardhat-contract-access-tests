@@ -121,7 +121,8 @@ describe("WETH9 Contract Deployed", function () {
     let tx;
 
     // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods( weth9Address, weth9ABI, signer )
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
     const ethDepositAmount = "2";
     const ethWithdrawAmount = "1";
 
@@ -135,7 +136,8 @@ describe("WETH9 Contract Deployed", function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[2];
     // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods( weth9Address, weth9ABI, signer )
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
     const ethDepositAmount = "2";
     const ethWithdrawAmount = "1";
 
@@ -149,7 +151,8 @@ describe("WETH9 Contract Deployed", function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[5];
     // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods( weth9Address, weth9ABI, signer )
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
 
@@ -170,7 +173,8 @@ describe("WETH9 Contract Deployed", function () {
     // console.log(`weth9ABI = ${weth9ABI}`)
 
     // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods( weth9Address, weth9ABI, signer )
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
 
