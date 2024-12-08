@@ -25,8 +25,8 @@ const deployWETH9Contract = async () => {
 }
 
 // load ABI from build artifacts
-async function getDeployedArtifactsAbiAddress(symbol){
-  console.log(`EXECUTING: getDeployedArtifactsAbiAddress(${symbol})`)
+async function getDeployedArtifactsABIAddress(symbol){
+  console.log(`EXECUTING: getDeployedArtifactsABIAddress(${symbol})`)
   let contractDeployed = await deployContract(symbol);
   const address = contractDeployed.address;
   // console.log(`contractDeployed.address = ${contractDeployed.address}`)
@@ -58,7 +58,7 @@ async function getNewDeployedContract(signer, symbol) {
 }
 
 async function getDeployedContract(signer, symbol) {
-  const { address, abi } = await getDeployedArtifactsAbiAddress(symbol);
+  const { address, abi } = await getDeployedArtifactsABIAddress(symbol);
   const signedWeth = new ethers.Contract(address, abi, signer);
   return signedWeth;
 }
@@ -66,7 +66,7 @@ async function getDeployedContract(signer, symbol) {
 module.exports = {
     deploySpCoinContract,
     deployWETH9Contract,
-    getDeployedArtifactsAbiAddress,
+    getDeployedArtifactsABIAddress,
     getDeployedContract,
     getNewDeployedContract,
     getSpCoinContract,

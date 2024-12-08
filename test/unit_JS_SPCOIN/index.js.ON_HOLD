@@ -1,7 +1,7 @@
 const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year, month, millennium } = require( "../../spcoin-access-modules/spcoinModules/utils/dateTime"); 
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
-const { deploySpCoinContract, getDeployedArtifactsAbiAddress } = require("../lib/deployContract");
+const { deploySpCoinContract, getDeployedArtifactsABIAddress } = require("../lib/deployContract");
 const { SpCoinClassModules } = require("../../spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
 
 // const { SpCoinClassModules } = require("@sponsorcoin/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
@@ -31,7 +31,7 @@ describe("spCoinContract", function () {
     signer = SPONSOR_ACCOUNT_SIGNERS[0];
     spCoinContractDeployed = await deploySpCoinContract();
 
-    const { address, abi } = await getDeployedArtifactsAbiAddress("SPCoin");
+    const { address, abi } = await getDeployedArtifactsABIAddress("SPCoin");
     spCoinAddress = address;
     spCoinABI = abi;
   });

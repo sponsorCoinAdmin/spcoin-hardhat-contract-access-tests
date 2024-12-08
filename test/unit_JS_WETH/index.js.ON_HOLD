@@ -1,6 +1,6 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
-const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsAbiAddress, getWeth9Contract } = require("../lib/deployContract.js");
+const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsABIAddress, getWeth9Contract } = require("../lib/deployContract.js");
 // const { WethMethods } = require("../../spcoin-access-modules/wethModule/wethMethods.js");
 const { WethMethods } = require("@sponsorcoin/spcoin-access-modules/wethModule/wethMethods.js"); 
 
@@ -26,7 +26,7 @@ describe("WETH9 Contract Deployed", function () {
     BURN_ADDRESS =  hHAccountRateMethods.BURN_ADDRESS;
     signer = SPONSOR_ACCOUNT_SIGNERS[0];
     weth9ContractDeployed = await deployWETH9Contract();
-    const { address, abi } = await getDeployedArtifactsAbiAddress("WETH9");
+    const { address, abi } = await getDeployedArtifactsABIAddress("WETH9");
     weth9Address = address;
     weth9ABI = abi;
 });
