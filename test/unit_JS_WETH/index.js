@@ -11,7 +11,7 @@ const {
   getWeth9NetworkAddress, 
   ETHEREUM,
   POLYGON,
-  HARDHAT } = require(npmLibraryModules);
+  HARDHAT } = require(localLibraryModules);
 
 let signer;
 let weth9Address;
