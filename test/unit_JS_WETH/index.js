@@ -1,14 +1,14 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsABIAddress, getWeth9Contract } = require("../lib/deployContract.js");
-const { WethMethods } = require("../../spcoin-access-modules/wethModule/wethMethods.js");
-// const { WethMethods } = require("@sponsorcoin/spcoin-access-modules/wethModule/wethMethods.js"); 
-const { getDeployedWeth9ABI,
+const {
+  WethMethods,
+  getDeployedWeth9ABI,
   getWeth9DefaultNetworkABIAddress,
   getWeth9NetworkAddress, 
   ETHEREUM,
   POLYGON,
-  HARDHAT } = require("../../spcoin-access-modules/wethModule/utils.js");
+  HARDHAT } = require("../../spcoin-access-modules/accessModules.js");
 
 let signer;
 let weth9Address;
