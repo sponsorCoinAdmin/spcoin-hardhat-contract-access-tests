@@ -3,7 +3,7 @@ const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsABIAddress, getWeth9Contract } = require("../lib/deployContract.js");
 // const { WethMethods } = require("../../spcoin-access-modules/wethModule/wethMethods.js");
 const { WethMethods } = require("@sponsorcoin/spcoin-access-modules/wethModule/wethMethods.js"); 
-const { getDeployedWethABI,
+const { getDeployedWeth9ABI,
   getWeth9DefaultNetworkABIAddress,
   getWeth9NetworkAddress, 
   ETHEREUM,
@@ -120,12 +120,10 @@ describe("WETH9 Contract Deployed", function () {
 
   it("5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
     let tx;
-
-    // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods();
-    wethMethods.connect( weth9Address, weth9ABI, signer );
     const ethDepositAmount = "2";
     const ethWithdrawAmount = "1";
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
 
     tx = await wethMethods.depositETH(ethDepositAmount)
     // console.log(`tx(${wethMethods.depositETH(ethDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
@@ -136,11 +134,10 @@ describe("WETH9 Contract Deployed", function () {
   it("6. <TYPE SCRIPT> wrap/un-wrap ETH Using Deployed WETH Address with Sinner account[2]", async function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[2];
-    // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods();
-    wethMethods.connect( weth9Address, weth9ABI, signer );
     const ethDepositAmount = "2";
     const ethWithdrawAmount = "1";
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
 
     tx = await wethMethods.depositETH(ethDepositAmount)
     // console.log(`tx(${wethMethods.depositETH(ethDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
@@ -151,11 +148,10 @@ describe("WETH9 Contract Deployed", function () {
   it("7. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[5]", async function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[5];
-    // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods();
-    wethMethods.connect( weth9Address, weth9ABI, signer );
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
 
     tx = await wethMethods.depositWEI(weiDepositAmount)
     // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
@@ -166,18 +162,15 @@ describe("WETH9 Contract Deployed", function () {
   it("8. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[9]", async function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[9];
-
-    const weth9Address = getWeth9NetworkAddress(HARDHAT);
-    console.log(`getWeth9NetworkAddress(HARDHAT) = ${weth9Address}`)
-
-    const weth9ABI = await getDeployedWethABI()
-    // console.log(`weth9ABI = ${weth9ABI}`)
-
-    // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods();
-    wethMethods.connect( weth9Address, weth9ABI, signer );
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
+    const weth9Address = getWeth9NetworkAddress(HARDHAT);
+    const weth9ABI = await getDeployedWeth9ABI()
+    // console.log(`weth9ABI = ${weth9ABI}`)
+    // console.log(`getWeth9NetworkAddress(HARDHAT) = ${weth9Address}`)
+
+    const wethMethods = new WethMethods();
+    wethMethods.connect( weth9Address, weth9ABI, signer );
 
     tx = await wethMethods.depositWEI(weiDepositAmount)
     // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
@@ -188,24 +181,15 @@ describe("WETH9 Contract Deployed", function () {
   it("9. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[9]", async function () {
     let tx;
     const signer = SPONSOR_ACCOUNT_SIGNERS[9];
-
-    const weth9Address = getWeth9NetworkAddress(HARDHAT);
-    console.log(`getWeth9NetworkAddress(HARDHAT) = ${weth9Address}`)
-
-    const weth9ABI = await getDeployedWethABI()
-    // console.log(`weth9ABI = ${weth9ABI}`)
-
-    // const signedWeth = await getWeth9Contract(signer);
-    const wethMethods = new WethMethods();
-
-    const defaultNetworkABIAddress = getWeth9DefaultNetworkABIAddress(HARDHAT);
-
-    //    { weth9Address, wethABI } 
-    
-    
-    wethMethods.connect( weth9Address, weth9ABI, signer );
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
+    const { weth9Address, weth9ABI }  = getWeth9DefaultNetworkABIAddress(HARDHAT);
+    const wethMethods = new WethMethods();
+
+    // console.log(`weth9Address = ${weth9Address}`)
+    // console.log(`weth9ABI = ${weth9ABI}`)
+
+    wethMethods.connect( weth9Address, weth9ABI, signer );
 
     tx = await wethMethods.depositWEI(weiDepositAmount)
     // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
