@@ -1,8 +1,8 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsABIAddress, getWeth9Contract } = require("../lib/deployContract.js");
-const localLibrarySrc = "../../spcoin-access-modules/accessModules.js"
-const npmLibrarySrc = "@sponsorcoin/spcoin-access-modules/accessModules.js"
+const localLibraryModules = "../../spcoin-access-modules/accessModules.js"
+const npmLibraryModules = "@sponsorcoin/spcoin-access-modules/accessModules.js"
 
 const {
   WethMethods,
@@ -11,7 +11,7 @@ const {
   getWeth9NetworkAddress, 
   ETHEREUM,
   POLYGON,
-  HARDHAT } = require(npmLibrarySrc);
+  HARDHAT } = require(npmLibraryModules);
 
 let signer;
 let weth9Address;
