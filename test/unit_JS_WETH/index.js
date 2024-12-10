@@ -6,7 +6,7 @@ const npmLibraryModules = "@sponsorcoin/spcoin-access-modules/accessModules.js"
 
 const {
   WethMethods,
-  HARDHAT } = require(localLibraryModules);
+  HARDHAT } = require(npmLibraryModules);
 
 let signer;
 let weth9Address;
