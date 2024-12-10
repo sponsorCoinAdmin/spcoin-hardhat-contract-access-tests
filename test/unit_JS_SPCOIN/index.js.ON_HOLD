@@ -12,9 +12,9 @@ const {
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
 const { deploySpCoinContract, getDeployedArtifactsABIAddress } = require("../lib/deployContract");
-const { SpCoinClassModules } = require("../../node_modules_prod/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
+const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-access-modules/spcoinModules/SpCoinAccessModules"); 
 
-// const { SpCoinClassModules } = require("@sponsorcoin/node_modules_prod/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
+// const { SpCoinAccessModules } = require("@sponsorcoin/node_modules_prod/spcoin-access-modules/spcoinModules/SpCoinAccessModules"); 
 
 let signer;
 let spCoinAddress;
@@ -62,7 +62,7 @@ describe("spCoinContract", function () {
   });
 
  it("2. <JAVA SCRIPT> VALIDATE ADD TRANSACTION RATES", async function () {
-  let spCoinClassModules = new SpCoinClassModules(spCoinABI, spCoinAddress, signer);
+  let spCoinClassModules = new SpCoinAccessModules(spCoinABI, spCoinAddress, signer);
   let spCoinAddMethods = spCoinClassModules.spCoinAddMethods;
   let spCoinRewardsMethods = spCoinClassModules.spCoinRewardsMethods;
   let spCoinReadMethods = spCoinClassModules.spCoinReadMethods;

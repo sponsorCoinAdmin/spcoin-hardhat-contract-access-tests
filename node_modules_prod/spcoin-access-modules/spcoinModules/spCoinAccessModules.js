@@ -8,7 +8,7 @@ const { SpCoinStakingModule } = require("./modules/spCoinStakingModule");
 const { second, minute, hour, day, week, year, month , millennium } = require("./modules/spCoinStakingModule");
 const ethers = require('ethers');
 
-class SpCoinClassModules {
+class SpCoinAccessModules {
   // constructor(_spCoinContractDeployed) {
     constructor(spCoinABI, spCoinAddress, signer) {
     // console.log(`AAA spCoinAddress = ${spCoinAddress}`)
@@ -46,7 +46,7 @@ class SpCoinClassModules {
 }
 
 module.exports =  {
-  SpCoinClassModules,
+  SpCoinAccessModules,
   SpCoinAddModule,
   SpCoinDeleteModule,
   SpCoinERC20Module,
