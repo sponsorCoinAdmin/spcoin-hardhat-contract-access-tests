@@ -1,3 +1,3 @@
-[submodule "spcoin-access-modules"]
-	path = spcoin-access-modules
-	url = git@github.com:sponsorCoinAdmin/spcoin-access-modules.git
+[submodule "node_modules_prod/spcoin-all-modules"]
+	path = node_modules_prod/spcoin-all-modules
+	url = git@github.com:sponsorCoinAdmin/spcoin-all-modules.git

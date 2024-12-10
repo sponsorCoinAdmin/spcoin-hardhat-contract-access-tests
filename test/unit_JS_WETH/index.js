@@ -1,12 +1,16 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsABIAddress, getWeth9Contract } = require("../lib/deployContract.js");
-const localLibraryModules = "../../spcoin-access-modules/accessModules.js"
-const npmLibraryModules = "@sponsorcoin/spcoin-access-modules/accessModules.js"
+
+// Use one of the 4 library's below. 2 are local development and 2 ard NPM installed
+const localLibraryAccessModules = "../../node_modules_prod/spcoin-access-modules/spcoinModules/spCoin_JS_Modules.js"
+const npmLibraryAccessModules = "@sponsorcoin/spcoin-access-modules/accessModules.js"
+const npmLibraryWethModules = "@sponsorcoin/weth-module/wethMethods"
+const localLibraryWethModules = "../../node_modules_prod/spcoin-weth-module/wethMethods"
 
 const {
   WethMethods,
-  HARDHAT } = require(npmLibraryModules);
+  HARDHAT } = require(localLibraryWethModules);
 
 let signer;
 let weth9Address;

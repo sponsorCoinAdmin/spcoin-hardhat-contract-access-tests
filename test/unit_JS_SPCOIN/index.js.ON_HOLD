@@ -1,10 +1,20 @@
-const { dateInMilliseconds, dateInSeconds, second, minute, hour, day, week, year, month, millennium } = require( "../../spcoin-access-modules/spcoinModules/utils/dateTime"); 
+const { 
+  dateInMilliseconds, 
+  dateInSeconds, 
+  second, minute,
+   hour, 
+   day, 
+   week, 
+   year, 
+   month, 
+   millennium } = require( "../../node_modules_prod/spcoin-access-modules/spcoinModules/utils/dateTime"); 
+  //  millennium } = require( "../../spcoin-access-modules/spcoinModules/utils/dateTime"); 
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
 const { deploySpCoinContract, getDeployedArtifactsABIAddress } = require("../lib/deployContract");
-const { SpCoinClassModules } = require("../../spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
+const { SpCoinClassModules } = require("../../node_modules_prod/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
 
-// const { SpCoinClassModules } = require("@sponsorcoin/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
+// const { SpCoinClassModules } = require("@sponsorcoin/node_modules_prod/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
 
 let signer;
 let spCoinAddress;
