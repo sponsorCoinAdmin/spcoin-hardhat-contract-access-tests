@@ -6,11 +6,6 @@ const npmLibraryModules = "@sponsorcoin/spcoin-access-modules/accessModules.js"
 
 const {
   WethMethods,
-  getDeployedWeth9ABI,
-  getWeth9DefaultNetworkABIAddress,
-  getWeth9NetworkAddress, 
-  ETHEREUM,
-  POLYGON,
   HARDHAT } = require(localLibraryModules);
 
 let signer;
@@ -167,12 +162,11 @@ describe("WETH9 Contract Deployed", function () {
     const signer = SPONSOR_ACCOUNT_SIGNERS[9];
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
-    const weth9Address = getWeth9NetworkAddress(HARDHAT);
-    const weth9ABI = await getDeployedWeth9ABI()
-    // console.log(`weth9ABI = ${weth9ABI}`)
-    // console.log(`getWeth9NetworkAddress(HARDHAT) = ${weth9Address}`)
-
     const wethMethods = new WethMethods();
+    const weth9Address = wethMethods.getWeth9NetworkAddress(HARDHAT);
+    const weth9ABI = await wethMethods.getDeployedWeth9ABI()
+    // console.log(`weth9ABI = ${weth9ABI}`)
+
     wethMethods.connect( weth9Address, weth9ABI, signer );
 
     tx = await wethMethods.depositWEI(weiDepositAmount)
@@ -186,8 +180,8 @@ describe("WETH9 Contract Deployed", function () {
     const signer = SPONSOR_ACCOUNT_SIGNERS[9];
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
-    const { weth9Address, weth9ABI }  = getWeth9DefaultNetworkABIAddress(HARDHAT);
     const wethMethods = new WethMethods();
+    const { weth9Address, weth9ABI }  = wethMethods.getWeth9DefaultNetworkABIAddress(HARDHAT);
 
     // console.log(`weth9Address = ${weth9Address}`)
     // console.log(`weth9ABI = ${weth9ABI}`)
@@ -205,11 +199,9 @@ describe("WETH9 Contract Deployed", function () {
     const signer = SPONSOR_ACCOUNT_SIGNERS[11];
     const weiDepositAmount = "2";
     const weiWithdrawAmount = "1";
+
     const wethMethods = new WethMethods();
-
-    // const { weth9Address, weth9ABI }  = getWeth9DefaultNetworkABIAddress(HARDHAT);
     wethMethods.connectWeth9DefaultNetwork( HARDHAT, signer );
-
     tx = await wethMethods.depositWEI(weiDepositAmount)
     // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
     tx = await wethMethods.withdrawWEI(weiWithdrawAmount)
