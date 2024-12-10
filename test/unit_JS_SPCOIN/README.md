@@ -7,8 +7,8 @@
 
 ### To develop for package management be sure the two lines in the index.js ar as follows.
     Note: the "Node Deployed" version is commented out and the "Development" version is not.
-        const { SpCoinClassModules } = require("../../spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
-        // const { SpCoinClassModules } = require("@sponsorcoin/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
+        const { SpCoinAccessModules } = require("../../spcoin-access-modules/spcoinModules/SpCoinAccessModules"); 
+        // const { SpCoinAccessModules } = require("@sponsorcoin/spcoin-access-modules/spcoinModules/SpCoinAccessModules"); 
 
 ### When development is complete, you can publish the package to the Node repository as follows:
     1. Change directory to git sub-module spcoin-access-modules.
@@ -23,8 +23,8 @@
        "npm install @sponsorcoin/spcoin-access-modules"
     2. Change the directory to run the Node deployed version instead of the development version as follows:
         Note: the "Development" version is commented out and the "Node Deployed" version is not.
-            // const { SpCoinClassModules } = require("../../spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
-            const { SpCoinClassModules } = require("@sponsorcoin/spcoin-access-modules/spcoinModules/spCoin_JS_Modules"); 
+            // const { SpCoinAccessModules } = require("../../spcoin-access-modules/spcoinModules/SpCoinAccessModules"); 
+            const { SpCoinAccessModules } = require("@sponsorcoin/spcoin-access-modules/spcoinModules/SpCoinAccessModules"); 
     3.  If you have the alias setup you can run the test from the package root level by typing, "hhtest",
         which will run the test and put the output in directory {./rootHome}/test.out/hhtest.out.
         If you do not have the alias's menu installed, run the command "npx hardhat test". 
