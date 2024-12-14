@@ -1,5 +1,7 @@
 #bsh
-echo Forking HardHat Server on Mainnet
-npx hardhat node --fork https://mainnet.infura.io/v3/08b06e80980b4c1c9d9d450f4f71607d &
+echo Forking HardHat Server on localhost
+#npx hardhat node --fork https://mainnet.infura.io/v3/08b06e80980b4c1c9d9d450f4f71607d &
 
-npx hardhat ignition deploy ./ignition/modules/Lock.ts --network localhost
+npx hardhat node &
+
+npx hardhat ignition deploy ignition/modules/deployWeth.js --network localhost
