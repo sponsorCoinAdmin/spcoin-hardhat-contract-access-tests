@@ -1,1 +1,0 @@
-npx hardhat ignition deploy ignition/modules/deploySPC.js --network localhost
