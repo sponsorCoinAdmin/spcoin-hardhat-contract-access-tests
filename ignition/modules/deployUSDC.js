@@ -1,7 +1,7 @@
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
-module.exports = buildModule("SPCOIN", (m) => {
-  const token = m.contract("SPCoin", []);
+module.exports = buildModule("USDC", (m) => {
+  const token = m.contract("USDC", []);
 
 //   m.call(weth, "launch", []);
 

@@ -1,2 +1,0 @@
-. $PROJECT_HOME/scripts/deployments/deploySPCoin.bsh
-. $PROJECT_HOME/scripts/deployments/deployweth.bsh

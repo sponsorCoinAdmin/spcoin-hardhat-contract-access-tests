@@ -16,7 +16,13 @@ module.exports = {
         }
       },
       {
+        version: "0.4.17"
+      },
+      {
         version: "0.4.18"
+      },
+      {
+        version: "0.4.24"
       },
     ],
     // version:  "0.8.18",
