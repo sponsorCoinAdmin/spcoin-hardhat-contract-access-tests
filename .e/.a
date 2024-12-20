@@ -30,6 +30,7 @@ alias hhrun="sethh; . scripts/runMain.sh"
 
 #DEPLOY TOKENS
 alias deploytokens=". $HH_SCRIPTS/deployTokens.sh"
+alias deployapollo=". $HH_SCRIPTS/deployments/deployApollo.sh"
 alias deploychicken=". $HH_SCRIPTS/deployments/deployChickenCoin.sh"
 alias deployspcoin=". $HH_SCRIPTS/deployments/deploySPCoin.sh"
 alias deployusdc=". $HH_SCRIPTS/deployments/deployUSDC.sh"
