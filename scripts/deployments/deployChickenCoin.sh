@@ -1,1 +1,1 @@
-npx hardhat ignition deploy $PROJECT_HOME/ignition/modules/deployChickenCoin.js --network localhost
+npx hardhat ignition deploy $SPCOIN_BG_DIR/ignition/modules/deployChickenCoin.js --network localhost

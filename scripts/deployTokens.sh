@@ -1,6 +1,8 @@
-. $HH_SCRIPTS/deployments/deployApollo.sh
-. $HH_SCRIPTS/deployments/deployChickenCoin.sh
-. $HH_SCRIPTS/deployments/deploySPCoin.sh
-. $HH_SCRIPTS/deployments/deployUSDC.sh
-. $HH_SCRIPTS/deployments/deployUSDT.sh
-. $HH_SCRIPTS/deployments/deployweth.sh
+. $SPCOIN_BG_SCRIPTS_DIR/deployments/deployApollo.sh
+. $SPCOIN_BG_SCRIPTS_DIR/deployments/deployChickenCoin.sh
+. $SPCOIN_BG_SCRIPTS_DIR/deployments/deploySPCoin.sh
+. $SPCOIN_BG_SCRIPTS_DIR/deployments/deployUSDC.sh
+. $SPCOIN_BG_SCRIPTS_DIR/deployments/deployUSDT.sh
+. $SPCOIN_BG_SCRIPTS_DIR/deployments/deployweth.sh
+
+!
