@@ -54,14 +54,14 @@ Read all copyright clauses and information before continuing to download and/or 
 - Change your current directory to <b>/spcoin-hardhat-contract-access-tests</b>
 - Install the required node packages, <b>npm -install</b>
 - Next install the text menu driven system as follows:
-    - execute the following command: <b>'. ./scripts/setupEnvAlises.sh</b>'
+    - execute the following command: <b>'. ./scripts/setupEnvAliases.sh</b>'
 - <b>Notes:
     - This installation assumes operation under command window bash or gitBash for windows</b>
     - The Menu System modifies the ~/.bashrc file to add an environment path link
  - - - - 
 ### Environment Setup<img src="https://github.com/sponsorCoinAdmin/spCoinImages/blob/main/setup6.png" width="7%" align= "right">
 - Now we will setup the menu alises for testing the sponsor coin project through hardhat.
-- From a linux command windrow, run the menu script <b>. ./scripts/setupEnvAlises.sh</b> from the projects home directory <b>spcoin-hardhat-contract-access-tests</b>.
+- From a linux command windrow, run the menu script <b>. ./scripts/setupEnvAliases.sh</b> from the projects home directory <b>spcoin-hardhat-contract-access-tests</b>.
 - Typing <b>m</b> will display a list of menu shortcut alias commands.
 - A sample configuration file <b>"[<b>.env</b>](https://github.com/sponsorCoinAdmin/spcoin-hardhat-contract-access-tests/blob/main/.e/SAMPLE.env)"</b> exists in  project's home directory <b>/spcoin-hardhat-contract-access-tests/.e/SAMPLE.env</b>.
 - Create an account on <b>"[<b>ALCHEMY</b>](https://auth.alchemy.com/?redirectUrl=https%3A%2F%2Fdashboard.alchemy.com)"</b>. And get your free <b>ALCHEMY</b> Network access keys.

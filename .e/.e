@@ -1,6 +1,11 @@
-export SPCOIN_BG_NAME=spcoin-hardhat-contract-access-tests/
-export SPCOIN_BG_DIR=/c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests/
-export SPCOIN_BG_SCRIPTS_DIR=/c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests/scripts/
-export SPCOIN_ENV_DIR=/c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests/.e
-export SPCOIN_LOGS_DIR=/c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests/logs/
-. /c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests/.e/.a
+export ACTIVE_PROJECT_NAME=spcoin-hardhat-contract-access-tests
+export ACTIVE_PROJECT_PATH=/c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests
+export ACTIVE_ENV_PATH=/c/Users/Robin/OneDrive/Dev/gitRepo/sponsorCoin/WIP/SPCOIN-PROJECT-MODULES/spcoin-hardhat-contract-access-tests/.e
+export ACTIVE_SCRIPTS_PATH=$ACTIVE_PROJECT_PATH/scripts
+export ACTIVE_LOGS_PATH=$ACTIVE_PROJECT_PATH/logs
+export SPCOIN_ROOT_NAME=$ACTIVE_PROJECT_NAME
+export SPCOIN_ROOT_PATH=$ACTIVE_PROJECT_PATH
+export SPCOIN_BG_PATH=$SPCOIN_ROOT_PATH/spcoin-hardhat-contract-access-tests
+export SPCOIN_FG_PATH=$SPCOIN_ROOT_PATH/spcoin-nextjs-front-end
+export SPCOIN_BG_PATH=$ACTIVE_PROJECT_PATH
+. $ACTIVE_ENV_PATH/.a
