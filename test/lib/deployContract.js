@@ -10,7 +10,8 @@ const deployContract = async (symbol) => {
 
   let contract = await hre.ethers.getContractFactory(symbol);
   const contractDeployed = await contract.deploy();
-  await contractDeployed.deployed();
+  // await contractDeployed.deployed();
+  await contractDeployed.waitForDeployment();
   return contractDeployed;
 }
 
