@@ -1,13 +1,14 @@
 const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods.js");
-const {stringifyBigInt } = require("../../lib/utils.js");
 const { deployWETH9Contract, deploySpCoinContract, getDeployedArtifactsABIAddress, getWeth9Contract } = require("../lib/deployContract.js");
+const { ethers } = require("hardhat")
 
 // Use one of the 4 library's below. 2 are local development and 2 ard NPM installed
-// const { WethMethods, HARDHAT } = require("../../node_modules_prod/spcoin-access-modules/index.js");
-// const { WethMethods, HARDHAT } = require("@sponsorcoin/spcoin-access-modules/accessModules.js");
-// const { WethMethods, HARDHAT }  = require("@sponsorcoin/weth-module/wethMethods");
-const { WethMethods, HARDHAT } = require("../../node_modules_prod/spcoin-weth-module/index");
+
+// const { WethMethods,HARDHAT } = require(`../../node_modules_prod/spcoin-weth-module/index`);
+// const { WethMethods,HARDHAT } = require(`../../node_modules_prod/spcoin-all-modules/index.js`);
+// const { WethMethods,HARDHAT } = require(`@sponsorcoin/spcoin-weth-module/index`);
+const { WethMethods,HARDHAT } = require(`@sponsorcoin/spcoin-all-modules/index.js`);
 
 let signer;
 let weth9Address;
@@ -20,6 +21,7 @@ let RECIPIENT_ACCOUNT_KEYS;
 let RECIPIENT_RATES;
 let BURN_ADDRESS;
 
+
 describe("WETH9 Contract Deployed", function () {
   beforeEach(async () => {
     hHAccountRateMethods = new HHAccountRateMethods();
@@ -31,6 +33,7 @@ describe("WETH9 Contract Deployed", function () {
     BURN_ADDRESS =  hHAccountRateMethods.BURN_ADDRESS;
     signer = SPONSOR_ACCOUNT_SIGNERS[0];
     weth9ContractDeployed = await deployWETH9Contract();
+    const myContractDeployedAddress = await weth9ContractDeployed.getAddress();
     const { address, abi } = await getDeployedArtifactsABIAddress("WETH9");
     weth9Address = address;
     weth9ABI = abi;
@@ -45,11 +48,15 @@ describe("WETH9 Contract Deployed", function () {
 
   //   // Validate Active signer Account is Account 0
   //   console.log(`hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address = ${hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address}`)
+  //   console.log(`weth9ContractDeployed.signer.address = ${weth9ContractDeployed?.signer?.address}`)
+  //   // Validate the Signer
+  //   // assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address, weth9ContractDeployed.signer.address);
 
   //   // Validate the Last Account
   //   assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS[19], "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199");
   // });
 
+  // // ToDo: BROKE FIX
   // it("2. <TYPE SCRIPT> VALIDATE DEPLOYED CONTRACT BY GETTING SIGNER and TEST ACCOUNT[5] BALANCE_OF", async function () {
   //   const initialBalance = 10000000000000000000000n;
   //   const account5 = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[5];
@@ -65,56 +72,56 @@ describe("WETH9 Contract Deployed", function () {
   //   assert.equal(account5Balance, initialBalance);
   // });
 
-  // it("3. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Contract with Sinner account[0]", async function () {
-  //   console.log(`Before Weth Address = ${weth9Address}`)
-  //   const signedWeth = weth9ContractDeployed.connect(signer);
-  //   // console.log(`Weth Contract = ${stringifyBigInt(weth9ContractDeployed)}`)
-  //   console.log(`After Weth Address = ${weth9Address}`)
-  //   const wrapEthAmount = ethers.parseEther("2");
-  //   const wrapWeiAmount = "5";
+  it("3. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Contract with Sinner account[0]", async function () {
+    const signedWeth = weth9ContractDeployed.connect(signer);
+    const wrapEthAmount = ethers.parseEther("2");
+    const wrapWeiAmount = "5";
 
-  //   let beforeEthBalance = await ethers.provider.getBalance(signer.address);
-  //   let signerWethBalance = await signedWeth.balanceOf(signer.address)
+    let beforeEthBalance = await ethers.provider.getBalance(signer.address);
+    let signerWethBalance = await signedWeth.balanceOf(signer.address)
 
-  //   console.log(`1. BEFORE WRAP: signer(${signer.address}) ETH Balance = ${beforeEthBalance}`);
-  //   console.log(`2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
+    console.log(`1. BEFORE WRAP: signer(${signer.address}) ETH Balance = ${beforeEthBalance}`);
+    console.log(`2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
 
-  //   let tx = await signedWeth.deposit({value: wrapEthAmount})
-  //   // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
-  //   tx = await signedWeth.deposit({value: wrapWeiAmount})
-  //   // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
+    let tx = await signedWeth.deposit({value: wrapEthAmount})
+    // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
+    tx = await signedWeth.deposit({value: wrapWeiAmount})
+    // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
 
-  //   signerWethBalance = await signedWeth.balanceOf(signer.address)
-  //   const afterEthBalance = await ethers.provider.getBalance(signer.address);
+    signerWethBalance = await signedWeth.balanceOf(signer.address)
+    const afterEthBalance = await ethers.provider.getBalance(signer.address);
 
-  //   console.log(`3. AFTER WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
-  //   console.log(`4. AFTER WRAP: signer(${signer.address}) ETH Balance = ${afterEthBalance}`);
-  //   console.log(`5. AFTER WRAP: Wrap Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
-  // });
+    console.log(`3. AFTER WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
+    console.log(`4. AFTER WRAP: signer(${signer.address}) ETH Balance = ${afterEthBalance}`);
+    console.log(`5. AFTER WRAP: Wrap Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
+  });
 
-  // it("4. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
-  //   const signedWeth = new ethers.Contract(weth9Address, weth9ABI, signer);
-  //   const wrapEthAmount = ethers.parseEther("2");
-  //   const wrapWeiAmount = "5";
+  it("4. <TYPE SCRIPT> Wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
+    console.log(`weth9address = ${weth9Address}`)
+    console.log(`weth9ABI = ${weth9ABI}`)
+    console.log(`signer = ${signer}`)
+    const signedWeth = new ethers.Contract(weth9Address, weth9ABI, signer);
+    const wrapEthAmount = ethers.parseEther("2");
+    const wrapWeiAmount = "5";
 
-  //   let beforeEthBalance = await ethers.provider.getBalance(signer.address);
-  //   let signerWethBalance = await signedWeth.balanceOf(signer.address)
+    let beforeEthBalance = await ethers.provider.getBalance(signer.address);
+    let signerWethBalance = await signedWeth.balanceOf(signer.address)
 
-  //   console.log(`1. BEFORE WRAP: signer(${signer.address}) ETH Balance = ${beforeEthBalance}`);
-  //   console.log(`2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
+    console.log(`1. BEFORE WRAP: signer(${signer.address}) ETH Balance = ${beforeEthBalance}`);
+    console.log(`2. BEFORE WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
 
-  //   let tx = await signedWeth.deposit({value: wrapEthAmount})
-  //   // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
-  //   tx = await signedWeth.deposit({value: wrapWeiAmount})
-  //   // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
+    let tx = await signedWeth.deposit({value: wrapEthAmount})
+    // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
+    tx = await signedWeth.deposit({value: wrapWeiAmount})
+    // console.log(`tx = ${JSON.stringify(tx,null,2)}`);
 
-  //   signerWethBalance = await signedWeth.balanceOf(signer.address)
-  //   const afterEthBalance = await ethers.provider.getBalance(signer.address);
+    signerWethBalance = await signedWeth.balanceOf(signer.address)
+    const afterEthBalance = await ethers.provider.getBalance(signer.address);
 
-  //   console.log(`3. AFTER WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
-  //   console.log(`4. AFTER WRAP: signer(${signer.address}) ETH Balance = ${afterEthBalance}`);
-  //   console.log(`5. AFTER WRAP: Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
-  // });
+    console.log(`3. AFTER WRAP WETH9Contract signer($signerWethBalance}) WETH Balance = ${signerWethBalance}`);
+    console.log(`4. AFTER WRAP: signer(${signer.address}) ETH Balance = ${afterEthBalance}`);
+    console.log(`5. AFTER WRAP: Gas Fees = ${(beforeEthBalance - afterEthBalance) - signerWethBalance}`);
+  });
 
   // it("5. <TYPE SCRIPT> un-wrap ETH Using Deployed WETH Address with Sinner account[0]", async function () {
   //   let tx;
@@ -143,19 +150,19 @@ describe("WETH9 Contract Deployed", function () {
   //   // console.log(`tx(${wethMethods.withdrawETH(ethWithdrawAmount)} = ${JSON.stringify(tx,null,2)}`);
   // });
 
-  it("7. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[5]", async function () {
-    let tx;
-    const signer = SPONSOR_ACCOUNT_SIGNERS[5];
-    const weiDepositAmount = "2";
-    const weiWithdrawAmount = "1";
-    const wethMethods = new WethMethods();
-    wethMethods.connect( weth9Address, weth9ABI, signer );
+  // it("7. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[5]", async function () {
+  //   let tx;
+  //   const signer = SPONSOR_ACCOUNT_SIGNERS[5];
+  //   const weiDepositAmount = "2";
+  //   const weiWithdrawAmount = "1";
+  //   const wethMethods = new WethMethods();
+  //   wethMethods.connect( weth9Address, weth9ABI, signer );
 
-    tx = await wethMethods.depositWEI(weiDepositAmount)
-    // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
-    tx = await wethMethods.withdrawWEI(weiWithdrawAmount)
-    // console.log(`tx(${wethMethods.withdrawETH(ethWithdrawAmount)} = ${JSON.stringify(tx,null,2)}`);
-  });
+  //   tx = await wethMethods.depositWEI(weiDepositAmount)
+  //   // console.log(`tx(${wethMethods.depositETH(weiDepositAmount)} = ${JSON.stringify(tx,null,2)}`);
+  //   tx = await wethMethods.withdrawWEI(weiWithdrawAmount)
+  //   // console.log(`tx(${wethMethods.withdrawETH(ethWithdrawAmount)} = ${JSON.stringify(tx,null,2)}`);
+  // });
 
   // it("8. <TYPE SCRIPT> wrap.un-wrap WEI Using Deployed WETH Address with Sinner account[9]", async function () {
   //   let tx;

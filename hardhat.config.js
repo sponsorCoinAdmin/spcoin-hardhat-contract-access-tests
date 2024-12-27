@@ -27,20 +27,29 @@ module.exports = {
           }
         }
       },
+      {
+        version: "0.8.28",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 2000,
+          }
+        }
+      },
     ],
     // version:  "0.8.18",
    },
   networks: {
-    hardhat: {
-      forking: {
-        enable: true,
-        // url: "https://mainnet.infura.io/v3/{YOUR INFURA KEY HERE}"
-        // or if using .env file use example similar to below
-        url: process.env.MAINNET_INFURA_TEST_URL
-        // url: process.env.GOERLI_INFURA_TEST_URL
-        // url: process.env.SEPOLIA_INFURA_TEST_URL
-      },
-    },
+    // hardhat: {
+    //   forking: {
+    //     enable: true,
+    //     // url: "https://mainnet.infura.io/v3/{YOUR INFURA KEY HERE}"
+    //     // or if using .env file use example similar to below
+    //     url: process.env.MAINNET_INFURA_TEST_URL
+    //     // url: process.env.GOERLI_INFURA_TEST_URL
+    //     // url: process.env.SEPOLIA_INFURA_TEST_URL
+    //   },
+    // },
     mainnet: {
       url: process.env.MAINNET_ALCHEMY_TEST_URL,
       accounts: [process.env.WALLET_SECRET]

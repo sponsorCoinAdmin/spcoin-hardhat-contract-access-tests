@@ -6,12 +6,12 @@ let ethers = hre.ethers;
 let spCoinContractDeployed;
 
 const deployContract = async (symbol) => {
-  //setLogMode(LOG_MODE.LOG_SETUP, true);
-
-  let contract = await hre.ethers.getContractFactory(symbol);
+  let contract = await ethers.getContractFactory(symbol);
   const contractDeployed = await contract.deploy();
-  // await contractDeployed.deployed();
   await contractDeployed.waitForDeployment();
+  // myNewContract = await getDeployedContract(symbol)
+  // console.debug(`***************** myNewContract.address    = ${myNewContract.address}`)
+  console.debug(`***************** contractDeployed.address = ${contractDeployed.address}`)
   return contractDeployed;
 }
 
@@ -29,8 +29,8 @@ const deployWETH9Contract = async () => {
 async function getDeployedArtifactsABIAddress(symbol){
   console.log(`EXECUTING: getDeployedArtifactsABIAddress(${symbol})`)
   let contractDeployed = await deployContract(symbol);
-  const address = contractDeployed.address;
-  // console.log(`contractDeployed.address = ${contractDeployed.address}`)
+  const address = await contractDeployed.getAddress();
+  // console.log(`contractDeployed.address = ${address}`)
   // console.log(`contractDeployed = ${JSON.stringify(contractDeployed, null, 2)}`)
   const fsPromises = fs.promises;
   const HARDHAT_ARTIFACTS_HOME = "artifacts/contracts/";
