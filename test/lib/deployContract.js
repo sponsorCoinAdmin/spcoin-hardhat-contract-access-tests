@@ -6,12 +6,18 @@ let ethers = hre.ethers;
 let spCoinContractDeployed;
 
 const deployContract = async (symbol) => {
-  let contract = await ethers.getContractFactory(symbol);
-  const contractDeployed = await contract.deploy();
+  const overrides = {
+    to: "0x5147c5C1Cb5b5D3f56186C37a4bcFBb3Cd0bD5A7"
+  };
+  
+  const Factory = await ethers.getContractFactory(symbol);
+  const contractDeployed = await Factory.deploy();
   await contractDeployed.waitForDeployment();
+  const address = await contractDeployed.getAddress();
+
+  console.debug(`***** Contract (${symbol}) address = ${address}`)
+
   // myNewContract = await getDeployedContract(symbol)
-  // console.debug(`***************** myNewContract.address    = ${myNewContract.address}`)
-  console.debug(`***************** contractDeployed.address = ${contractDeployed.address}`)
   return contractDeployed;
 }
 
