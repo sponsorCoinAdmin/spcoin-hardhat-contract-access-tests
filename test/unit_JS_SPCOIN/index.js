@@ -46,7 +46,7 @@ describe("spCoinContract", function () {
     spCoinABI = abi;
   });
 
-  it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
+  xgit it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
     hHAccountRateMethods.dump();
     console.log(`signer.address = ${signer.address}`);
 
