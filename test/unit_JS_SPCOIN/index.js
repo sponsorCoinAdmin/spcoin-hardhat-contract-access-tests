@@ -16,7 +16,6 @@ const { deploySpCoinContract, getDeployedArtifactsABIAddress } = require("../lib
 const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-access-modules/index"); 
 // const { SpCoinAccessModules } = require("@sponsorcoin/spcoin-access-modules/index"); 
 
-
 let signer;
 let spCoinAddress;
 let spCoinABI;
@@ -24,7 +23,9 @@ let spCoinContractDeployed;
 let hHAccountRateMethods;
 let SPONSOR_ACCOUNT_SIGNERS;
 let SPONSOR_ACCOUNT_KEYS;
+let AGENT_ACCOUNT_KEYS; 
 let RECIPIENT_ACCOUNT_KEYS; 
+let AGENT_RATES; 
 let RECIPIENT_RATES;
 let BURN_ADDRESS;
 
@@ -36,8 +37,11 @@ describe("spCoinContract", function () {
     SPONSOR_ACCOUNT_SIGNERS = hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS;
     SPONSOR_ACCOUNT_KEYS = hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS;
     RECIPIENT_ACCOUNT_KEYS = hHAccountRateMethods.RECIPIENT_ACCOUNT_KEYS;
+    AGENT_ACCOUNT_KEYS = hHAccountRateMethods.AGENT_ACCOUNT_KEYS;
+    AGENT_RATES = hHAccountRateMethods.AGENT_RATES;
     RECIPIENT_RATES = hHAccountRateMethods.RECIPIENT_RATES;
     BURN_ADDRESS =  hHAccountRateMethods.BURN_ADDRESS;
+    
 
     signer = SPONSOR_ACCOUNT_SIGNERS[0];
     spCoinContractDeployed = await deploySpCoinContract();
@@ -437,14 +441,14 @@ describe("spCoinContract", function () {
   //   dateInSeconds()
   // );
 
-  // await spCoinAddMethods.addAgentSponsorship(
-  //   SPONSOR_ACCOUNT_SIGNERS[0],
-  //   RECIPIENT_ACCOUNT_KEYS[1],
-  //   RECIPIENT_RATES[10],
-  //   AGENT_ACCOUNT_KEYS[2],
-  //   AGENT_RATES[10],
-  //   "2"
-  // );
+  await spCoinAddMethods.addAgentSponsorship(
+    SPONSOR_ACCOUNT_SIGNERS[0],
+    RECIPIENT_ACCOUNT_KEYS[1],
+    RECIPIENT_RATES[10],
+    AGENT_ACCOUNT_KEYS[2],
+    AGENT_RATES[10],
+    "2"
+  );
 
   await spCoinRewardsMethods.updateAccountStakingRewards( SPONSOR_ACCOUNT_KEYS[0] );
 
