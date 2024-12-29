@@ -15,8 +15,6 @@ const deployContract = async (symbol) => {
   await contractDeployed.waitForDeployment();
   const address = await contractDeployed.getAddress();
 
-  console.debug(`***** Contract (${symbol}) address = ${address}`)
-
   // myNewContract = await getDeployedContract(symbol)
   return contractDeployed;
 }

@@ -14,6 +14,7 @@ const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
 const { deploySpCoinContract, getDeployedArtifactsABIAddress } = require("../lib/deployContract");
 // const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-all-modules/index"); 
 const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-access-modules/index"); 
+// const { SpCoinAccessModules } = require("@sponsorcoin/spcoin-access-modules/index"); 
 
 
 let signer;
@@ -46,7 +47,7 @@ describe("spCoinContract", function () {
     spCoinABI = abi;
   });
 
-  xgit it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
+  xit("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
     hHAccountRateMethods.dump();
     console.log(`signer.address = ${signer.address}`);
 
@@ -447,9 +448,9 @@ describe("spCoinContract", function () {
 
   await spCoinRewardsMethods.updateAccountStakingRewards( SPONSOR_ACCOUNT_KEYS[0] );
 
-  // console.log("********************************************************************************");
+  console.log("********************************************************************************");
   console.log("\n\n*** AFTER CREATE ******************************************************************************************************\n\n");
-  // console.log("********************************************************************************");
+  console.log("********************************************************************************");
 
   let getBody = true;
   let spCoinRecords = await spCoinReadMethods.getSPCoinHeaderRecord(getBody);
