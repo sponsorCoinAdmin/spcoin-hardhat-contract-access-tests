@@ -1,0 +1,19 @@
+{
+  "name": "@sponsorcoin/spcoin-lib",
+  "version": "1.0.0",
+  "description": "Sponsor Coin library's",
+  "main": "utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sponsorCoinAdmin/spcoin-lib.git"
+  },
+  "author": "Robert Lanson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sponsorCoinAdmin/spcoin-lib/issues"
+  },
+  "homepage": "https://github.com/sponsorCoinAdmin/spcoin-lib#readme"
+}

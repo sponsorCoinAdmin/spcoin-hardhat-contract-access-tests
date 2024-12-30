@@ -13,8 +13,8 @@ const { assert } = require ('chai');
 const { HHAccountRateMethods } = require("../lib/hhAccountRateMethods");
 const { deploySpCoinContract, getDeployedArtifactsABIAddress } = require("../lib/deployContract");
 // const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-all-modules/index"); 
-const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-access-modules/index"); 
-// const { SpCoinAccessModules } = require("@sponsorcoin/spcoin-access-modules/index"); 
+const { SpCoinAccessModules } = require("../../node_modules_prod/spcoin-access-modules/index");
+// const { SpCoinAccessModules } = require("@sponsorcoin/spcoin-access-modules/index");
 
 let signer;
 let spCoinAddress;
