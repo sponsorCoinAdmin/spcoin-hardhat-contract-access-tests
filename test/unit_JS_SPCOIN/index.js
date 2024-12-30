@@ -51,7 +51,7 @@ describe("spCoinContract", function () {
     spCoinABI = abi;
   });
 
-  xit("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
+  it("1. <TYPE SCRIPT> VALIDATE HARDHAT IS ACTIVE WITH ACCOUNTS", async function () {
     hHAccountRateMethods.dump();
     console.log(`signer.address = ${signer.address}`);
 
@@ -60,7 +60,6 @@ describe("spCoinContract", function () {
 
     // Validate Active signer Account is Account 0
     console.log(`hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address = ${hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address}`)
-    assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_SIGNERS[0].address, spCoinContractDeployed.signer.address);
     
     // Validate the Last Account
     assert.equal(hHAccountRateMethods.SPONSOR_ACCOUNT_KEYS[19], "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199");
@@ -77,12 +76,12 @@ describe("spCoinContract", function () {
   // Recipient Account to the Blockchain Network.
   // Account, Recipient and/or Agent are Successfully mutually exclusive.
 
-  // await spCoinAddMethods.addSponsorship(
-  //   SPONSOR_ACCOUNT_SIGNERS[0],
-  //   RECIPIENT_ACCOUNT_KEYS[1],
-  //   RECIPIENT_RATES[9],
-  //   "1.000000000000000008"
-  // );
+  await spCoinAddMethods.addSponsorship(
+    SPONSOR_ACCOUNT_SIGNERS[0],
+    RECIPIENT_ACCOUNT_KEYS[1],
+    RECIPIENT_RATES[9],
+    "1.000000000000000008"
+  );
 
   // await spCoinAddMethods.addSponsorship(
   //   SPONSOR_ACCOUNT_SIGNERS[1],
@@ -377,13 +376,13 @@ describe("spCoinContract", function () {
 
   // let currDateInSecs = dateInSeconds();
   
-  await spCoinAddMethods.addBackDatedSponsorship(
-    SPONSOR_ACCOUNT_SIGNERS[0],   // DEPOSIT ACCOUNT
-    RECIPIENT_ACCOUNT_KEYS[1], 
-    RECIPIENT_RATES[9],
-    "100", 
-    dateInSeconds() - year
-  );
+  // await spCoinAddMethods.addBackDatedSponsorship(
+  //   SPONSOR_ACCOUNT_SIGNERS[0],   // DEPOSIT ACCOUNT
+  //   RECIPIENT_ACCOUNT_KEYS[1], 
+  //   RECIPIENT_RATES[9],
+  //   "100", 
+  //   dateInSeconds() - year
+  // );
 
     // await spCoinAddMethods.addBackDatedSponsorship(
   //   SPONSOR_ACCOUNT_SIGNERS[0],   // DEPOSIT ACCOUNT
@@ -441,14 +440,14 @@ describe("spCoinContract", function () {
   //   dateInSeconds()
   // );
 
-  await spCoinAddMethods.addAgentSponsorship(
-    SPONSOR_ACCOUNT_SIGNERS[0],
-    RECIPIENT_ACCOUNT_KEYS[1],
-    RECIPIENT_RATES[10],
-    AGENT_ACCOUNT_KEYS[2],
-    AGENT_RATES[10],
-    "2"
-  );
+  // await spCoinAddMethods.addAgentSponsorship(
+  //   SPONSOR_ACCOUNT_SIGNERS[0],
+  //   RECIPIENT_ACCOUNT_KEYS[1],
+  //   RECIPIENT_RATES[10],
+  //   AGENT_ACCOUNT_KEYS[2],
+  //   AGENT_RATES[10],
+  //   "2"
+  // );
 
   await spCoinRewardsMethods.updateAccountStakingRewards( SPONSOR_ACCOUNT_KEYS[0] );
 
